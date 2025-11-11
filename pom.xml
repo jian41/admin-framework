@@ -331,16 +331,7 @@
     </profiles>
 
     <build>
-        <!-- 修改资源文件中的版本号哦-->
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.properties</include>
-                </includes>
-            </resource>
-        </resources>
+
 
         <plugins>
             <plugin>
