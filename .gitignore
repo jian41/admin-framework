@@ -34,3 +34,4 @@ build/
 /web/node_modules/
 /web/package-lock.json
 /web/pnpm-lock.yaml
+/web/src/.umi/
