@@ -13,7 +13,7 @@ import 'dayjs/locale/zh-cn';
 import '../style/global.less'
 import './index.less'
 import {HttpUtil, PageLoading, PageUtil, SysUtil} from "@jian41/admin-framework";
-import {MsgBoxComponent} from "../components/MsgBox";
+import {MsgBoxComponent} from "@jian41/admin-framework";
 
 dayjs.locale('zh-cn');
 

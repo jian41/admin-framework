@@ -2,7 +2,7 @@ import React from "react";
 import {Card, Empty, Modal, Skeleton, Table, Tabs, Typography} from "antd";
 import {Gap, HttpUtil} from "@jian41/admin-framework";
 import {FormOutlined, ShareAltOutlined} from "@ant-design/icons";
-import {formRegistry} from "../common/FormRegistry";
+import {formRegistry} from "@jian41/admin-framework"
 
 
 export default class InstanceInfo extends React.Component {

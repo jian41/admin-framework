@@ -9,3 +9,4 @@ export * from './page'
 export  * from "./sys"
 
 export * from './http'
+export * from './FormRegistry'

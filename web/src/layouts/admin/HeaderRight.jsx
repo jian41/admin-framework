@@ -4,7 +4,7 @@ import React from "react";
 import {history} from "umi";
 import {HttpUtil, PageUtil, SysUtil} from "@jian41/admin-framework";
 import {isMobileDevice} from "@jian41/admin-framework";
-import {MsgBox} from "../../components/MsgBox";
+import {MsgBox} from "@jian41/admin-framework";
 
 
 const ID = 'header-right';

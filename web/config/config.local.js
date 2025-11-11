@@ -10,5 +10,4 @@ let config = {
     ...defaultConfigLocal,
     ...frameworkConfig,
 };
-console.log("config:", config);
 export default defineConfig(config);

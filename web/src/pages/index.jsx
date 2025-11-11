@@ -1,6 +1,5 @@
 import React from "react";
 import {Button, Card, Space} from "antd";
-import {MsgBox} from "../components/MsgBox";
 
 
 export default class extends React.Component {

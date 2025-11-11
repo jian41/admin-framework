@@ -54,7 +54,7 @@ const frameworkConfig = {
     alias : {
         '@jian41/admin-framework':  'src',
     },
-    plugins: ['plugins/routes'],
+    plugins: ['./plugins/routes'],
 
 }
 module.exports = {

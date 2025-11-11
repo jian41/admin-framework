@@ -5,7 +5,7 @@ import "./login.less"
 import {history} from 'umi';
 import {HttpUtil, PageUtil, SysUtil} from "@jian41/admin-framework";
 import {JSEncrypt} from "jsencrypt";
-import {MsgBox} from "../components/MsgBox";
+import {MsgBox} from "@jian41/admin-framework";
 
 
 export default class login extends React.Component {
