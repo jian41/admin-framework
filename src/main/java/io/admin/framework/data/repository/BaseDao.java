@@ -4,7 +4,6 @@ import cn.hutool.core.bean.BeanUtil;
 import io.admin.framework.data.domain.PersistEntity;
 import io.admin.framework.data.query.ExpressionTool;
 import io.admin.framework.data.query.JpaQuery;
-import io.admin.framework.data.query.Selector;
 import io.admin.framework.data.query.StatField;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
@@ -467,78 +466,6 @@ public class BaseDao<T extends PersistEntity> {
 
         return (List<R>) entityManager.createQuery(query).getResultList();
     }
-
-
-    /**
-     * 查询一个单值
-     * 如select sum(age) from user
-     *
-     * @param spec
-     * @param selector
-     * @return
-     */
-    public Object selectSingle(Specification<T> spec, Selector selector) {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Object> query = builder.createQuery(Object.class);
-        Root<T> root = query.from(domainClass);
-
-        List<Selection<?>> selections = selector.select(builder, root);
-        Assert.state(selections.size() == 1, "selection的个数应为1");
-        Selection<?> selection = selections.get(0);
-
-        query.select(selection).where(spec.toPredicate(root, query, builder));
-
-        return entityManager.createQuery(query).getSingleResult();
-    }
-
-    /**
-     * 查询多个值，但只返回一行，常用于统计
-     * 如 select sum(age), count(*) from user
-     *
-     * @param spec
-     * @param selector
-     * @return
-     */
-    public Object[] select(Specification<T> spec, Selector selector) {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Object> query = builder.createQuery(Object.class);
-        Root<T> root = query.from(domainClass);
-
-        List<Selection<?>> selections = selector.select(builder, root);
-        Assert.state(selections.size() > 1, "selections需多个");
-
-
-        Predicate predicate = spec.toPredicate(root, query, builder);
-        query.multiselect(selections).where(predicate);
-
-        return (Object[]) entityManager.createQuery(query).getSingleResult();
-    }
-
-    /**
-     * 按分组字段统计结果
-     *
-     * @param groupField 分组字段（支持嵌套路径，如"user.id"）
-     * @param selector   聚合选择器
-     * @return 分组统计结果（每行格式：Map{"groupField": value, "stat1": value1, ...}）
-     */
-    @Deprecated
-    public List<Map> select(Specification<T> spec, String groupField, Selector selector) {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Map> query = builder.createQuery(Map.class);
-        Root<T> root = query.from(domainClass);
-
-        Expression group = ExpressionTool.getExpression(groupField, root); //分组字段
-
-        List<Selection<?>> selections = new ArrayList<>();
-        selections.add(group.alias(groupField));
-        selections.addAll(selector.select(builder, root));
-
-        Predicate predicate = spec.toPredicate(root, query, builder);
-        query.multiselect(selections).where(predicate).groupBy(group);
-
-        return entityManager.createQuery(query).getResultList();
-    }
-
 
     /**
      * 分组统计
