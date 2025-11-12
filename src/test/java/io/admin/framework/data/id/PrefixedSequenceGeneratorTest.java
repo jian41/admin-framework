@@ -24,7 +24,6 @@ public class PrefixedSequenceGeneratorTest {
         e.setName("OK");
         em.persist(e);
         System.out.println("生成的id为 " + e.getId());
-        System.out.println(JsonUtils.toJsonQuietly(e));
 
 
         Assertions.assertTrue(e.getId().startsWith("BOOK"));

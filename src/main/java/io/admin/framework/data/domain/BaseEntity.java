@@ -67,7 +67,7 @@ public abstract class BaseEntity implements PersistEntity, Serializable {
     private String updateUser;
 
     /// ===== 乐观锁字段 =====
-    @org.springframework.data.annotation.Version
+    @Version
     @Column(columnDefinition = "bigint default 0") // 建议：仅用于提示数据库建表时设置默认值
     private Integer lockVersion;
 
