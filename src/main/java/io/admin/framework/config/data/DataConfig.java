@@ -1,11 +1,12 @@
 package io.admin.framework.config.data;
 
 import cn.hutool.core.collection.CollUtil;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import io.admin.framework.config.data.sysmenu.MenuDefinition;
 import io.admin.common.utils.tree.TreeTool;
+import io.admin.framework.config.data.sysmenu.MenuDefinition;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,24 +36,24 @@ public class DataConfig {
             // 设置排序（如果没有主动设置的）
             for (int i = 0; i < items.size(); i++) {
                 MenuDefinition definition = items.get(i);
-                if(definition.getSeq() == null){
+                if (definition.getSeq() == null) {
                     definition.setSeq(i);
                 }
             }
 
-            TreeTool.walk(items,MenuDefinition::getChildren,(menu,parent)->{
+            TreeTool.walk(items, MenuDefinition::getChildren, (menu, parent) -> {
                 initMenu(menu, parent);
 
                 MenuDefinition preMenu = menuMap.get(menu.getId());
-                if(preMenu != null){
+                if (preMenu != null) {
                     // 如果多次定义，则合并
-                    if(menu.getName() == null){
+                    if (menu.getName() == null) {
                         menu.setName(preMenu.getName());
                     }
-                    if(menu.getIcon() == null){
+                    if (menu.getIcon() == null) {
                         menu.setIcon(preMenu.getIcon());
                     }
-                    if(menu.getSeq() == null){
+                    if (menu.getSeq() == null) {
                         menu.setSeq(preMenu.getSeq());
                     }
                 }
@@ -60,10 +61,10 @@ public class DataConfig {
                 menuMap.put(menu.getId(), menu);
             });
 
-            if(CollUtil.isNotEmpty(data.getBadges())){
+            if (CollUtil.isNotEmpty(data.getBadges())) {
                 prop.getBadges().addAll(data.getBadges());
             }
-            if(CollUtil.isNotEmpty(data.getConfigs())){
+            if (CollUtil.isNotEmpty(data.getConfigs())) {
                 prop.getConfigs().addAll(data.getConfigs());
             }
         }
@@ -79,11 +80,11 @@ public class DataConfig {
     }
 
     private static void initMenu(MenuDefinition m, MenuDefinition parent) {
-        if(parent != null){
+        if (parent != null) {
             m.setPid(parent.getId());
         }
 
-        if(m.getChildren() != null){
+        if (m.getChildren() != null) {
             List<MenuDefinition> children = m.getChildren();
             for (int i = 0; i < children.size(); i++) {
                 MenuDefinition child = children.get(i);
@@ -105,13 +106,13 @@ public class DataConfig {
 
     @SneakyThrows
     private DataRoot parseResource(Resource resource) {
-        ObjectMapper om = new ObjectMapper(new YAMLFactory());
-        om.setPropertyNamingStrategy(PropertyNamingStrategies.KEBAB_CASE);
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategies.KEBAB_CASE);
+        mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true);
 
-        InputStream is = resource.getInputStream();
-        DataRoot root = om.readValue(is, DataRoot.class);
-
-        return root;
+        try (InputStream is = resource.getInputStream()){
+            return mapper.readValue(is, DataRoot.class);
+        }
     }
 
 
