@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Descriptions, Space} from "antd";
-import {ButtonList, HttpUtil} from "@jian41/admin-framework";
-import {ProTable} from "@jian41/admin-framework";
+import {ButtonList, HttpUtil} from "@/framework";
+import {ProTable} from "@/framework";
 export default class extends React.Component {
 
     state = {

@@ -1,5 +1,5 @@
 import React from "react";
-import {HttpUtil, PageUtil} from "@jian41/admin-framework";
+import {HttpUtil, PageUtil} from "@/framework";
 import {Button, Descriptions, Table, Typography} from "antd";
 
 const {Title, Paragraph, Text, Link} = Typography;

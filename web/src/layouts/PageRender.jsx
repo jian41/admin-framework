@@ -1,7 +1,7 @@
 import {matchRoutes, useAppData} from "umi";
 import React from "react";
 import {Result} from "antd";
-import {UrlUtil} from "@jian41/admin-framework";
+import {UrlUtil} from "@/framework";
 
 /**
  * 通过指定 pathname 渲染页面

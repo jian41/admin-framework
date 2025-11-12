@@ -1,6 +1,6 @@
 import {Button} from 'antd'
 import React from 'react'
-import {HttpUtil, PageUtil, ProTable, SysUtil} from "@jian41/admin-framework";
+import {HttpUtil, PageUtil, ProTable, SysUtil} from "@/framework";
 
 
 export default class extends React.Component {

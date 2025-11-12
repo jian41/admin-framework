@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Modal, Popover, Tooltip} from 'antd';
-import {StrUtil} from "@jian41/admin-framework";
+import {StrUtil} from "@/framework";
 
 
 export class ViewEllipsis extends React.Component {

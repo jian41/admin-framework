@@ -1,5 +1,5 @@
 import React from "react";
-import {StrUtil} from "@jian41/admin-framework";
+import {StrUtil} from "@/framework";
 
 export class ViewRange extends React.Component {
 

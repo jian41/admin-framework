@@ -10,7 +10,7 @@ import {
     HttpUtil,
     Page, PageUtil,
     ProTable
-} from "@jian41/admin-framework";
+} from "@/framework";
 
 
 export default class extends React.Component {

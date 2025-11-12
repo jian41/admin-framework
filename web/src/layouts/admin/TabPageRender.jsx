@@ -1,5 +1,5 @@
 import React from "react";
-import {PageUtil} from "@jian41/admin-framework";
+import {PageUtil} from "@/framework";
 import {withRouter} from "umi";
 import {Tabs} from "antd";
 import {PageRender} from "../PageRender";

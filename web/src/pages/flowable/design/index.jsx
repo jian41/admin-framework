@@ -15,7 +15,7 @@ import UserTaskForm from "../../../components/flow/design/form/UserTaskForm";
 import palette from "../../../components/flow/design/palette";
 import contextPad from "../../../components/flow/design/contextPad";
 import {CloudUploadOutlined, SaveOutlined} from "@ant-design/icons";
-import {HttpUtil, PageUtil} from "@jian41/admin-framework";
+import {HttpUtil, PageUtil} from "@/framework";
 
 export default class extends React.Component {
 

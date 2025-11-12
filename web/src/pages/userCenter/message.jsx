@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Card, Tabs, Tag} from "antd";
-import {HttpUtil, ProTable} from "@jian41/admin-framework";
+import {HttpUtil, ProTable} from "@/framework";
 
 export default class  extends React.Component {
 

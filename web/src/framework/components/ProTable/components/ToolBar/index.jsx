@@ -5,7 +5,7 @@ import {FileExcelOutlined, HistoryOutlined, ReloadOutlined} from '@ant-design/ic
 import {Button, Input, message, Modal, Table} from 'antd';
 import React from 'react';
 import './index.less';
-import {DateUtil, StorageUtil} from "@jian41/admin-framework";
+import {DateUtil, StorageUtil} from "@/framework";
 import {PageUtil} from "../../../../system";
 
 export default class Toolbar extends React.Component {

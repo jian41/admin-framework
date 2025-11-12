@@ -1,7 +1,7 @@
 import React from 'react';
 import {Editor as TinyMceEditor} from '@tinymce/tinymce-react';
 import {SysUtil} from "../../system";
-import {UrlUtil} from "@jian41/admin-framework";
+import {UrlUtil} from "@/framework";
 
 
 /**

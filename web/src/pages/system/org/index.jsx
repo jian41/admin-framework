@@ -4,13 +4,14 @@ import React from 'react';
 import {
     FieldDictRadio,
     FieldRadioBoolean,
-    FieldRemoteTreeSelect, FieldSelect, FieldUserSelect,
+    FieldRemoteTreeSelect,
+    FieldUserSelect,
     Gap,
     HttpUtil,
     NamedIcon,
-    Page
-} from "@jian41/admin-framework";
-import {TreeUtil} from "@jian41/admin-framework";
+    Page,
+    TreeUtil
+} from "@/framework";
 
 const baseTitle = "组织机构";
 const baseApi = 'sysOrg/';

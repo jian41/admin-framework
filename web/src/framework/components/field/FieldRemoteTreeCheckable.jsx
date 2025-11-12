@@ -1,7 +1,7 @@
 import {message, Spin, TreeSelect} from 'antd';
 
 import React from 'react';
-import {TreeUtil} from "@jian41/admin-framework";
+import {TreeUtil} from "@/framework";
 import {HttpUtil} from "../../system";
 
 

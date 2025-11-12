@@ -1,5 +1,5 @@
 import React from 'react'
-import {HttpUtil, Page, ProTable, SysUtil} from "@jian41/admin-framework";
+import {HttpUtil, Page, ProTable, SysUtil} from "@/framework";
 
 
 export default class extends React.Component {

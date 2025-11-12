@@ -1,9 +1,9 @@
 import React from 'react';
 import {Button, Form, Input, InputNumber, message, Radio, Switch, Table} from 'antd';
 import {DeleteOutlined, PlusOutlined} from '@ant-design/icons';
-import {ProModal} from "@jian41/admin-framework";
+import {ProModal} from "@/framework";
 import BpmnUtils from "../../BpmnUtils";
-import {ArrUtil} from "@jian41/admin-framework";
+import {ArrUtil} from "@/framework";
 
 /**
  * 条件表单

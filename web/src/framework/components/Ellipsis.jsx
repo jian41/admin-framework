@@ -1,6 +1,6 @@
 import React from 'react';
 import {Modal, Tooltip, Typography} from 'antd';
-import {StrUtil} from "@jian41/admin-framework";
+import {StrUtil} from "@/framework";
 import './Ellipsis.less'
 
 export class Ellipsis extends React.Component {

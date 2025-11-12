@@ -8,7 +8,7 @@ import {
     HttpUtil,
     ProTable,
     SysUtil
-} from "@jian41/admin-framework";
+} from "@/framework";
 import {CloudUploadOutlined} from "@ant-design/icons";
 
 

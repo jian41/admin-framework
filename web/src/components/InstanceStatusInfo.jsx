@@ -1,6 +1,6 @@
 import React from "react";
 import {Card, Empty, Skeleton, Table} from "antd";
-import {HttpUtil} from "@jian41/admin-framework";
+import {HttpUtil} from "@/framework";
 
 
 export default class InstanceStatusInfo extends React.Component {

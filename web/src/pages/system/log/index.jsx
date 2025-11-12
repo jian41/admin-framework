@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {Form, Input, Tag, Typography} from "antd";
-import {Ellipsis, FieldDateRange, HttpUtil, ProTable} from "@jian41/admin-framework";
+import {Ellipsis, FieldDateRange, HttpUtil, ProTable} from "@/framework";
 
 
 export default class extends React.Component {

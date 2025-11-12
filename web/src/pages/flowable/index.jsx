@@ -1,6 +1,6 @@
 import {Button, Modal, Popconfirm, Space} from 'antd';
 import React from 'react';
-import {HttpUtil, PageUtil, ProTable} from "@jian41/admin-framework";
+import {HttpUtil, PageUtil, ProTable} from "@/framework";
 import {PlusOutlined} from "@ant-design/icons";
 
 const baseTitle = "流程模型";

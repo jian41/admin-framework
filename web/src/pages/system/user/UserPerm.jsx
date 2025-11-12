@@ -1,6 +1,6 @@
 import {Form, Modal, Spin, Tree} from 'antd';
 import React from 'react';
-import {FieldDictSelect,  FieldSelect, HttpUtil} from "@jian41/admin-framework";
+import {FieldDictSelect,  FieldSelect, HttpUtil} from "@/framework";
 
 
 export default class UserPerm extends React.Component {

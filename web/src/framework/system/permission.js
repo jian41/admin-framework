@@ -2,7 +2,7 @@
  * 控制按钮是否显示
  */
 import {SysUtil} from "./sys";
-import {ArrUtil} from "@jian41/admin-framework";
+import {ArrUtil} from "@/framework";
 
 
 export const PermUtil = {

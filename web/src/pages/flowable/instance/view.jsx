@@ -1,5 +1,5 @@
 import React from "react";
-import {PageUtil} from "@jian41/admin-framework";
+import {PageUtil} from "@/framework";
 import InstanceStatusInfo from "../../../components/InstanceStatusInfo";
 
 export default class extends React.Component {

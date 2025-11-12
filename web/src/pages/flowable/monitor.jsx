@@ -3,7 +3,7 @@ import {Card, Tabs} from "antd";
 import AllTask from "../../components/monitor/AllTask";
 import AllDefinition from "../../components/monitor/AllDefinition";
 import AllInstance from "../../components/monitor/AllInstance";
-import {Page} from "@jian41/admin-framework";
+import {Page} from "@/framework";
 
 export default class extends React.Component {
 

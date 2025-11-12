@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Modal, Tabs} from "antd";
-import {HttpUtil, LinkButton, Page, PageLoading, ProTable} from "@jian41/admin-framework";
+import {HttpUtil, LinkButton, Page, PageLoading, ProTable} from "@/framework";
 import InstanceInfo from "../../../components/InstanceInfo";
 
 

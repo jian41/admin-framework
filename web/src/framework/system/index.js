@@ -10,3 +10,4 @@ export  * from "./sys"
 
 export * from './http'
 export * from './FormRegistry'
+export * from './theme'

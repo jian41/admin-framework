@@ -7,11 +7,11 @@ import {history, Link} from 'umi';
 import "./index.less"
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import defaultLogo from '../../asserts/logo.png'
-import {DateUtil, isMobileDevice, theme, TreeUtil} from "@jian41/admin-framework";
+import {DateUtil, isMobileDevice, theme, TreeUtil} from "@/framework";
 
 import HeaderRight from "./HeaderRight";
 
-import {HttpUtil, NamedIcon, PageUtil, SysUtil} from "@jian41/admin-framework";
+import {HttpUtil, NamedIcon, PageUtil, SysUtil} from "@/framework";
 import TabPageRender from "./TabPageRender";
 
 const {Header, Footer, Sider, Content} = Layout;

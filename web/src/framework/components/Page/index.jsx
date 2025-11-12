@@ -1,6 +1,6 @@
 import React from "react";
 import './index.less'
-import {theme} from "@jian41/admin-framework";
+import {theme} from "@/framework";
 
 /**
  * 上下间隔

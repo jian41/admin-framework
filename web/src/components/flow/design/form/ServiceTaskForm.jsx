@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form, Select} from 'antd';
-import { HttpUtil} from "@jian41/admin-framework";
+import { HttpUtil} from "@/framework";
 
 export default class extends React.Component {
   bo = null;

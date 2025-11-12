@@ -9,7 +9,7 @@ import {
     HttpUtil,
     OrgTree, Page,
     ProTable
-} from "@jian41/admin-framework";
+} from "@/framework";
 import UserPerm from "./UserPerm";
 import {RoleTree} from "@jian41/admin-framework/src/components/RoleTree";
 

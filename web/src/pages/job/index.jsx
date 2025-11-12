@@ -1,8 +1,8 @@
 import {AutoComplete, Button, Form, Input, message, Modal, Popconfirm, Select, Space, Switch, Tag} from 'antd'
 import React from 'react'
 import {PlusOutlined, ReloadOutlined} from "@ant-design/icons";
-import { HttpUtil, Page, PageUtil, ProTable, SysUtil} from "@jian41/admin-framework";
-import {StrUtil} from "@jian41/admin-framework";
+import { HttpUtil, Page, PageUtil, ProTable, SysUtil} from "@/framework";
+import {StrUtil} from "@/framework";
 import {ValueType} from "@jian41/admin-framework/src/components/ValueType";
 
 

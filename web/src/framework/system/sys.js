@@ -1,4 +1,4 @@
-import {StorageUtil, StrUtil, UrlUtil} from "@jian41/admin-framework";
+import {StorageUtil, StrUtil, UrlUtil} from "@/framework";
 
 const SITE_INFO_KEY = "siteInfo"
 const LOGIN_INFO_KEY = "loginInfo"

@@ -1,7 +1,7 @@
 import React from "react";
 import {Avatar, Card, Col, List, Row, Tabs} from "antd";
 import ChangePassword from "./ChangePassword";
-import {HttpUtil, Page} from "@jian41/admin-framework";
+import {HttpUtil, Page} from "@/framework";
 
 export default class extends React.Component {
 

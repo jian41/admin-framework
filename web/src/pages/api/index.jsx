@@ -8,8 +8,8 @@ import {
     HttpUtil,
     PageUtil,
     ProTable
-} from "@jian41/admin-framework";
-import {StrUtil} from "@jian41/admin-framework";
+} from "@/framework";
+import {StrUtil} from "@/framework";
 
 
 export default class extends React.Component {
