@@ -106,9 +106,6 @@ public abstract class BaseEntity implements PersistEntity, Serializable {
     @PrePersist
     public void prePersist() {
         this.prePersistOrUpdate();
-        if(this.id == null && this._tempId == null){
-            this.id = IdTool.uuidV7();
-        }
 
         // 有些异步保存的数据，时间上有些许差异。 可提前设置createTime，防止差异发生
         Date now = this.createTime == null ? new Date() : this.createTime;
