@@ -11,18 +11,15 @@ import lombok.Setter;
 
 @Entity
 @Data
-@EqualsAndHashCode(of = "id", callSuper = false)
 public class TestEntity1  extends BaseNoIdEntity {
 
 
 
-    private String id;
+
 
     @Id
     @GeneratePrefixedSequence(prefix = "BOOK")
-    public String getId() {
-        return id;
-    }
+    private String id;
 
     private String name;
 }

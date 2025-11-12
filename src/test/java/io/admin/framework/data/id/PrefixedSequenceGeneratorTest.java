@@ -1,6 +1,7 @@
 package io.admin.framework.data.id;
 
 
+import io.admin.common.utils.JsonUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.Assertions;
@@ -21,6 +22,7 @@ public class PrefixedSequenceGeneratorTest {
         e.setName("OK");
         em.persist(e);
         System.out.println("生成的id为 " + e.getId());
+        System.out.println(JsonUtils.toJsonQuietly(e));
 
 
         Assertions.assertTrue(e.getId().startsWith("BOOK"));

@@ -1,9 +1,12 @@
 package io.admin.framework.data.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.admin.framework.data.id.ann.GeneratePrefixedSequence;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,8 +21,6 @@ import java.util.Date;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"}, ignoreUnknown = true)
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseNoIdEntity {
-
-
 
 
 
