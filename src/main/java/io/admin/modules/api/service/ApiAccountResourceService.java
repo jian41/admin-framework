@@ -18,7 +18,7 @@ public class ApiAccountResourceService extends BaseService<ApiAccountResource> {
         JpaQuery<ApiAccountResource> q = new JpaQuery<>();
         q.eq(ApiAccountResource.Fields.account, acc);
 
-        List<ApiAccountResource> list = this.findAll(q);
+        List<ApiAccountResource> list = baseDao.findAll(q);
 
 
         List<ApiResource> resourceList = list.stream().map(ApiAccountResource::getResource)
@@ -33,7 +33,7 @@ public class ApiAccountResourceService extends BaseService<ApiAccountResource> {
         q.eq(ApiAccountResource.Fields.account, account);
         q.eq(ApiAccountResource.Fields.resource + "." + ApiResource.Fields.action, action);
 
-        return this.findOne(q);
+        return baseDao.findOne(q);
     }
 
 
@@ -41,7 +41,7 @@ public class ApiAccountResourceService extends BaseService<ApiAccountResource> {
         JpaQuery<ApiAccountResource> q = new JpaQuery<>();
         q.eq(ApiAccountResource.Fields.resource, r);
 
-        ApiAccountResource old = findOne(q);
+        ApiAccountResource old = baseDao.findOne(q);
 
         if(old != null){
             baseDao.delete(old);
