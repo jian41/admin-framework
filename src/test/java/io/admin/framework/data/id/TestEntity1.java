@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TestEntity1 extends BaseEntity {
+public class TestEntity1  {
 
 
     @Id

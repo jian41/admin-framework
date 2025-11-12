@@ -20,9 +20,9 @@ public class PrefixedSequenceIdGeneratorTest {
         TestEntity1 e = new TestEntity1();
         e.setName("OK");
         em.persist(e);
-        System.out.println("生成的id为" +e.getId());
+        System.out.println("生成的id为 " +e.getId());
 
-        Assertions.assertTrue(e.getId().startsWith("BOOK"));
+     Assertions.assertTrue(e.getId().startsWith("BOOK"));
 
     }
 
