@@ -13,7 +13,6 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.jcajce.provider.util.BadBlockException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -37,7 +36,12 @@ public class AuthService {
     CodeGenerator codeGenerator;
 
 
-    public void validate(HttpServletRequest request) {
+    /**
+     *
+     * @param request
+     * @return 解密后的密码
+     */
+    public String validate(HttpServletRequest request) {
         // 0. 随眠 1秒，对用户无感知，但等防止爆破攻击
         ThreadUtil.sleep(1000);
 
@@ -79,8 +83,7 @@ public class AuthService {
 
         boolean strengthOk = PasswordUtils.isStrengthOk(password);
         Assert.state(strengthOk, "密码强度不够，请联系管理员重置");
-
-
+        return password;
     }
 
 
