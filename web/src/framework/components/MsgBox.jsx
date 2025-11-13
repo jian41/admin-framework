@@ -27,11 +27,14 @@ export class MsgBox {
     }
 
     static confirm(msg, title = '确认') {
+        console.log('confirm', this._ref.current)
         let instance = this._ref.current;
         if (instance) {
             return new Promise((resolve) => {
                 instance.show('confirm', msg, title, resolve);
             });
+        }else {
+
         }
         return Promise.resolve(false);
     }

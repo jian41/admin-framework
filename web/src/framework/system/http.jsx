@@ -2,19 +2,10 @@ import axios from "axios";
 import {message as messageUtil, Modal} from "antd";
 import {SysUtil} from "./sys";
 import qs from 'qs'
-axios.interceptors.request.use(function (config) {
-    console.log('请求参数：', config);
-    return config;
-}, error => {
-    return Promise.reject(error);
-});
-/*axios.interceptors.response.use(function (response) {
-    console.log('返回结果：', response);
-    return response;
-}, error => {
-    console.log('返回错误：', error);
-    return Promise.reject(error);
-});*/
+import {MsgBox} from "../components";
+import {history} from "umi";
+
+
 export const HttpUtil = {
 
     create() {
@@ -170,6 +161,13 @@ class Util {
                 }
                 let title = "请求异常";
                 let msg = '操作失败';
+
+                if(e.status  === 401){
+                    MsgBox.confirm('登录已过期，请重新登录').then(rs=>{
+                        history.push('/login')
+                    })
+                    return;
+                }
 
                 if(e.status  === 504){
                     msg = '504 请求后端服务失败'

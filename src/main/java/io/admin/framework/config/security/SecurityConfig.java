@@ -81,6 +81,7 @@ public class SecurityConfig {
                     })
                     .authenticationEntryPoint((request, response, e) -> {
                         AjaxResult err = AjaxResult.err(401,"认证信息已失效或未登录，请重新登录。" +e.getMessage());
+                        response.setStatus(401);
                         ResponseUtils.response(response, err);
                     });
 

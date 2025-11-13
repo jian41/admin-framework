@@ -107,11 +107,6 @@ public class ResponseUtils {
         response.getWriter().flush();
     }
 
-    public static AjaxResult responseDataError(Integer code, String message) {
-        AjaxResult ajaxResult = AjaxResult.err().code(code).msg(message);
-        return ajaxResult;
-    }
-
 
 
     public static void responseHtml(HttpServletResponse response, String html) throws IOException {
