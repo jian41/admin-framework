@@ -9,8 +9,7 @@ import {
     Gap,
     HttpUtil,
     NamedIcon,
-    Page,
-    TreeUtil
+    Page
 } from "@/framework";
 
 
@@ -32,13 +31,6 @@ export default class extends React.Component {
         treeData: [],
         treeLoading: false,
         draggable: false,
-
-        expandedKeys: [],
-
-
-        enableAllLoading: false,
-
-
     }
     actionRef = React.createRef();
     treeRef = React.createRef();
@@ -96,31 +88,12 @@ export default class extends React.Component {
             this.setState({submitLoading: false})
         })
     }
-    handleEnableAll = (id) => {
-        this.setState({enableAllLoading: true})
-        HttpUtil.get( 'admin/sysOrg/enableAll', {id}).then(rs => {
-            this.loadTree()
-        }).finally(() => {
-            this.setState({enableAllLoading: false})
-        })
-    }
 
-    handleDisableAll = (id) => {
-        this.setState({enableAllLoading: true})
-        HttpUtil.get('admin/sysOrg/disableAll', {id}).then(rs => {
-            this.loadTree()
-        }).finally(() => {
-            this.setState({enableAllLoading: false})
-        })
-    }
 
     onDraggableChange = e => {
         this.setState({draggable: e})
     };
-    onExpandSelect = v => {
-        const keys = TreeUtil.findKeysByLevel(this.state.treeData, v)
-        this.setState({expandedKeys: keys})
-    }
+
 
     render() {
         let {formValues} = this.state;
@@ -132,17 +105,7 @@ export default class extends React.Component {
                     <Card loading={this.state.treeLoading}
                           title='组织机构'
                           extra={<Space>
-                              <div>
-                                  展开 <Select style={{width: 80}}
-                                               size='small'
-                                               options={[
-                                                   {label: '所有', value: -1},
-                                                   {label: '一级', value: 1},
-                                                   {label: '二级', value: 2},
-                                                   {label: '三级', value: 3}]}
-                                               onChange={this.onExpandSelect}
-                              />
-                              </div>
+
                               <div>
                                   拖拽排序&nbsp;<Switch
                                   value={this.state.draggable}
@@ -191,11 +154,6 @@ export default class extends React.Component {
                               draggable={this.state.draggable}
                               onDrop={this.onDrop}
                               showLine
-                              expandedKeys={this.state.expandedKeys}
-                              onExpand={(expandedKeys) => {
-                                  this.setState({expandedKeys})
-                              }}
-                              autoExpandParent
                         >
                         </Tree>
                         {this.state.treeData.length === 0 && <Empty/>}
@@ -232,17 +190,7 @@ export default class extends React.Component {
                                 <Button icon={<DeleteOutlined/>} disabled={disabled}>删除</Button>
                             </Popconfirm>
 
-                            <Popconfirm
-                                title='启用本级及子节点'
-                                disabled={disabled}
-                                onConfirm={() => this.handleEnableAll(formValues?.id)}>
-                                <Button disabled={disabled}>启用本级及子节点</Button>
-                            </Popconfirm>
 
-                            <Popconfirm title='禁用本级及子节点' disabled={disabled}
-                                        onConfirm={() => this.handleDisableAll(formValues?.id)}>
-                                <Button disabled={disabled}>禁用本级及子节点</Button>
-                            </Popconfirm>
 
                         </Space>}
                     >

@@ -63,21 +63,7 @@ public class SysOrgController {
         return AjaxResult.ok().data(org);
     }
 
-    @Log("机构-启用")
-    @HasPermission("sysOrg:save")
-    @GetMapping("enableAll")
-    public AjaxResult enableAll(String id) {
-        sysOrgService.toggleAllStatus(id, true);
-        return AjaxResult.ok();
-    }
 
-    @Log("机构-禁用")
-    @HasPermission("sysOrg:save")
-    @GetMapping("disableAll")
-    public AjaxResult disableAll(String id) {
-        sysOrgService.toggleAllStatus(id, false);
-        return AjaxResult.ok();
-    }
 
 
 
