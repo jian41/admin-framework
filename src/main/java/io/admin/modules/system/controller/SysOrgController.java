@@ -51,8 +51,8 @@ public class SysOrgController {
     @Log("机构-删除")
     @HasPermission("sysOrg:delete")
     @RequestMapping("delete")
-    public AjaxResult delete(@RequestBody SysOrg sysOrg, HttpSession session) {
-        sysOrgService.deleteByRequest(sysOrg.getId());
+    public AjaxResult delete(String id) {
+        sysOrgService.deleteByRequest(id);
         return AjaxResult.ok().msg("删除机构成功");
     }
 

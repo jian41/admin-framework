@@ -74,11 +74,15 @@ public class SecurityConfig {
                     });
                 });
 
-        http.exceptionHandling(cfg->{
-           cfg.accessDeniedHandler((request, response, e) -> {
-               AjaxResult err = AjaxResult.err(e.getMessage());
-               ResponseUtils.response(response,err);
-           });
+        http.exceptionHandling(cfg -> {
+            cfg.accessDeniedHandler((request, response, e) -> {
+                        AjaxResult err = AjaxResult.err(e.getMessage());
+                        ResponseUtils.response(response, err);
+                    })
+                    .authenticationEntryPoint((request, response, e) -> {
+                        AjaxResult err = AjaxResult.err(401,"认证信息已失效或未登录，请重新登录。" +e.getMessage());
+                        ResponseUtils.response(response, err);
+                    });
 
         });
 

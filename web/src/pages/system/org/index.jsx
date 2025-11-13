@@ -53,11 +53,8 @@ export default class extends React.Component {
         })
     }
 
-    handleDelete = row => {
-        HttpUtil.create()
-            .enableShowMessage()
-            .enableShowLoading()
-            .post('sysOrg/delete', row)
+    handleDelete = record => {
+           HttpUtil.get('admin/sysOrg/delete', {id:record.id})
             .then(rs => {
                 this.setState({formValues: null})
                 this.loadTree()
