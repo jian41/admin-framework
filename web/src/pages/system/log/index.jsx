@@ -57,7 +57,7 @@ export default class extends React.Component {
     render() {
         return <>
             <ProTable
-                request={(params) => HttpUtil.pageData('sysLog/page', params)}
+                request={(params) => HttpUtil.pageData('admin/sysLog/page', params)}
                 columns={this.columns}
             >
                 <Form.Item label='操作' name='operation'>

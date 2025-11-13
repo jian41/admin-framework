@@ -37,7 +37,7 @@ class _Layouts extends React.Component {
 
 
     componentDidMount() {
-        HttpUtil.get("/public/site-info").then(rs => {
+        HttpUtil.get("/admin/public/site-info").then(rs => {
             SysUtil.setSiteInfo(rs)
             this.setState({siteInfoLoading: false})
 
@@ -69,10 +69,10 @@ class _Layouts extends React.Component {
                 const {login, needUpdatePwd} = rs
                 if (login && !needUpdatePwd) {
                     Promise.all([
-                        HttpUtil.get('/getLoginInfo').then(res => {
+                        HttpUtil.get('admin/getLoginInfo').then(res => {
                             SysUtil.setLoginInfo(res)
                         }),
-                        HttpUtil.get('/common/dictTree').then(res => {
+                        HttpUtil.get('admin/common/dictTree').then(res => {
                             SysUtil.setDictInfo(res)
                         }),
 
@@ -98,7 +98,7 @@ class _Layouts extends React.Component {
 
 
     reLogin = () => {
-        HttpUtil.get('/auth/logout').finally(() => {
+        HttpUtil.get('admin/auth/logout').finally(() => {
             SysUtil.setToken(null)
             history.push('/login')
         })

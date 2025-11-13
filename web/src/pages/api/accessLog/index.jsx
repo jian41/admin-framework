@@ -97,7 +97,7 @@ export default class extends React.Component {
   render() {
     return <Page>
       <ProTable
-          request={(params) => HttpUtil.pageData('apiAccessLog/page', params)}
+          request={(params) => HttpUtil.pageData('admin/apiAccessLog/page', params)}
           columns={this.columns}
       />
 

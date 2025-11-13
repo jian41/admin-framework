@@ -67,7 +67,7 @@ export default class extends React.Component {
   ]
 
   clean = (selectedRowKeys)=>{
-    HttpUtil.post('/job/jobLogClean', {ids:selectedRowKeys} ).then(rs=>{
+    HttpUtil.post('admin//job/jobLogClean', {ids:selectedRowKeys} ).then(rs=>{
       this.tableRef.current.reload()
     })
   }
@@ -85,7 +85,7 @@ export default class extends React.Component {
             const jobId = PageUtil.currentParams().jobId
           params.jobId = jobId;
 
-          return HttpUtil.pageData('job/jobLog', params);
+          return HttpUtil.pageData('admin/job/jobLog', params);
         }}
         columns={this.columns}
         rowSelection={{}}

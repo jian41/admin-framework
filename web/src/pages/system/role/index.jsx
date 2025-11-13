@@ -148,7 +148,7 @@ export default class extends React.Component {
 
 
     onFinish = values => {
-        HttpUtil.post('sysRole/save', values).then(rs => {
+        HttpUtil.post('admin/sysRole/save', values).then(rs => {
             this.setState({formOpen: false})
             this.tableRef.current.reload()
         })
@@ -166,7 +166,7 @@ export default class extends React.Component {
             id: this.state.formValues.id,
             userIdList:this.state.targetKeys
         }
-        HttpUtil.post('sysRole/grantUsers', params).then(rs => {
+        HttpUtil.post('admin/sysRole/grantUsers', params).then(rs => {
             this.setState({usersModalOpen:false})
         })
     }
@@ -185,7 +185,7 @@ export default class extends React.Component {
             id: this.state.formValues.id,
             menuIds:[...this.state.menuChecked, ...this.state.menuHalfChecked]
         }
-        HttpUtil.post('sysRole/grantMenu', params).then(rs => {
+        HttpUtil.post('admin/sysRole/grantMenu', params).then(rs => {
             debugger
             this.setState({menuOpen:false})
         })
@@ -202,7 +202,7 @@ export default class extends React.Component {
                         </Button>
                     </ButtonList>
                 }}
-                request={(params) => HttpUtil.pageData('sysRole/page', params)}
+                request={(params) => HttpUtil.pageData('admin/sysRole/page', params)}
                 columns={this.columns}
 
             />

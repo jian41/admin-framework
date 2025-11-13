@@ -139,7 +139,7 @@ export default class extends React.Component {
         return new Promise((resolve, reject) => {
             const hide = message.loading('保存中...', 0)
             this.bpmnModeler.saveXML().then(res => {
-                HttpUtil.post('/flowable/model/saveContent', {id: id, content: res.xml}).then(rs => {
+                HttpUtil.post('admin//flowable/model/saveContent', {id: id, content: res.xml}).then(rs => {
                     hide()
                     message.success('服务端保存成功')
                     resolve()
@@ -154,7 +154,7 @@ export default class extends React.Component {
         let id = this.state.id;
 
         this.bpmnModeler.saveXML().then(res => {
-            HttpUtil.post('/flowable/model/deploy', {id: id, content: res.xml})
+            HttpUtil.post('admin//flowable/model/deploy', {id: id, content: res.xml})
         })
     }
 

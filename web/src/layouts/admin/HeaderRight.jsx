@@ -30,7 +30,7 @@ export default class HeaderRight extends React.Component {
     }
 
     logout = () => {
-        HttpUtil.post('/auth/logout').then(async () => {
+        HttpUtil.post('admin//auth/logout').then(async () => {
             localStorage.clear()
             await MsgBox.alert('退出登录成功');
             history.replace('/login')

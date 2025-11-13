@@ -15,7 +15,7 @@ export default class extends React.Component {
             this.setState({dataSource: rs.list, summary: rs.summary})
         })
 
-        HttpUtil.get("jobStatus/statsTotal").then(list => {
+        HttpUtil.get("admin/jobStatus/statsTotal").then(list => {
 
             const dates = list.map(item => item.date);
             const success = list.map(item => item.success);

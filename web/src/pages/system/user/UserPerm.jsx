@@ -18,7 +18,7 @@ export default class UserPerm extends React.Component {
     show(item) {
         this.setState({visible: true})
 
-        HttpUtil.get('/sysUser/getPermInfo', {id: item.id}).then(rs => {
+        HttpUtil.get('admin/sysUser/getPermInfo', {id: item.id}).then(rs => {
             this.setState({formValues: rs})
             this.formRef.current.setFieldsValue(rs)
         })
@@ -32,7 +32,7 @@ export default class UserPerm extends React.Component {
         })
 
 
-        HttpUtil.post('sysUser/grantPerm', values).then(rs => {
+        HttpUtil.post('admin/sysUser/grantPerm', values).then(rs => {
             this.setState({
                 visible: false,
                 confirmLoading: false
@@ -104,7 +104,7 @@ class FieldTree extends React.Component {
     }
 
     componentDidMount() {
-        HttpUtil.get('/sysOrg/unitTree').then(treeData => {
+        HttpUtil.get('admin/sysOrg/unitTree').then(treeData => {
             this.setState({treeData, treeLoading: false})
         })
     }

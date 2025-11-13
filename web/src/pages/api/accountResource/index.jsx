@@ -83,7 +83,7 @@ export default class extends React.Component {
 
     onFinish = values => {
         values.account = {id: this.accountId}
-        HttpUtil.post('apiAccountResource/save', values).then(rs => {
+        HttpUtil.post('admin/apiAccountResource/save', values).then(rs => {
             this.setState({formOpen: false})
             this.tableRef.current.reload()
         })
@@ -110,7 +110,7 @@ export default class extends React.Component {
                 }}
                 request={(params) => {
                     params.accountId =PageUtil.currentParams().accountId
-                    return HttpUtil.pageData('apiAccountResource/page', params);
+                    return HttpUtil.pageData('admin/apiAccountResource/page', params);
                 }}
                 columns={this.columns}
             />

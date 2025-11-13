@@ -41,7 +41,7 @@ export default class extends React.Component {
                 headerTitle='数据字典'
                 actionRef={this.tableRef}
 
-                request={(params) => HttpUtil.pageData('sysDict/page', params)}
+                request={(params) => HttpUtil.pageData('admin/sysDict/page', params)}
                 columns={this.columns}
                 rowKey='id'
 

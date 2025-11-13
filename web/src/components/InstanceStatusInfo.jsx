@@ -26,7 +26,7 @@ export default class InstanceStatusInfo extends React.Component {
 
     componentDidMount() {
         const {id, businessKey} = this.props;
-        HttpUtil.get("flowable/userClient/getInstanceInfo", {id, businessKey}).then(rs => {
+        HttpUtil.get("admin/flowable/userClient/getInstanceInfo", {id, businessKey}).then(rs => {
             this.setState(rs)
             this.setState({data: rs})
         }).catch(e => {

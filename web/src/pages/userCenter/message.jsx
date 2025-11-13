@@ -48,7 +48,7 @@ export default class  extends React.Component {
     ]
 
     read = (record) => {
-        HttpUtil.post("user/msg/read", record).then(rs => {
+        HttpUtil.post("admin/user/msg/read", record).then(rs => {
             this.tableRef.current.reload()
         })
     }
@@ -63,7 +63,7 @@ export default class  extends React.Component {
                 <Tabs.TabPane key='0' tab='所有消息'>
                     <ProTable
                         actionRef={this.tableRef}
-                        request={(params) => HttpUtil.pageData("user/msg/page", params)}
+                        request={(params) => HttpUtil.pageData("admin/user/msg/page", params)}
                         columns={this.columns}
                         toolbarOptions={{showSearch:false}}
                         size='small'
@@ -72,7 +72,7 @@ export default class  extends React.Component {
                 <Tabs.TabPane key='1' tab='未读消息'>
                     <ProTable
                         actionRef={this.tableRef}
-                        request={(params) => HttpUtil.pageData("user/msg/page?read=false", params)}
+                        request={(params) => HttpUtil.pageData("admin/user/msg/page?read=false", params)}
                         columns={this.columns}
                         rowSelection={false}
                         rowKey='id'
@@ -86,7 +86,7 @@ export default class  extends React.Component {
 
                     <ProTable
                         actionRef={this.tableRef}
-                        request={(params) => HttpUtil.pageData("user/msg/page?read=true", params)}
+                        request={(params) => HttpUtil.pageData("admin/user/msg/page?read=true", params)}
                         rowSelection={false}
                         rowKey='id'
                         toolbarOptions={{showSearch:false}}

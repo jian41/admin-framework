@@ -49,7 +49,7 @@ export default class extends React.Component {
 
     componentDidMount() {
         const {initData} = this.state;
-        HttpUtil.get('/flowable/model/assignmentTypeList').then(assignmentTypeList => {
+        HttpUtil.get('admin/flowable/model/assignmentTypeList').then(assignmentTypeList => {
             if (this.destroyed) {
                 return;
             }

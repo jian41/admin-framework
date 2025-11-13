@@ -111,7 +111,7 @@ export default class extends React.Component {
                     </Button>
                 }}
                 request={(params) => {
-                    return HttpUtil.pageData('sysFile/page', params);
+                    return HttpUtil.pageData('admin/sysFile/page', params);
                 }}
 
                 columns={this.columns}

@@ -67,7 +67,7 @@ export default class extends React.Component {
     render() {
         return <ProTable
             actionRef={this.actionRef}
-            request={(params, sort, filter) => HttpUtil.pageData('sysOnlineUser/page', params, sort)}
+            request={(params, sort, filter) => HttpUtil.pageData('admin/sysOnlineUser/page', params, sort)}
             columns={this.columns}
             rowKey="sessionId"
             search={false}

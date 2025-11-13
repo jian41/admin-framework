@@ -12,7 +12,7 @@ export default class extends React.Component {
                 {dataIndex: 'desc', title: '描述'},
 
             ]}
-            request={(params,) => HttpUtil.pageData('apiResource/page', params)}
+            request={(params,) => HttpUtil.pageData('admin/apiResource/page', params)}
         />
     }
 }

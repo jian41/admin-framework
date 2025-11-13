@@ -48,7 +48,7 @@ export default class extends React.Component {
 
   onFinish = values => {
     values.modelCode = this.state.model.code
-    HttpUtil.post('flowable/test/submit', values).then(rs=>{
+    HttpUtil.post('admin/flowable/test/submit', values).then(rs=>{
 
     })
   };

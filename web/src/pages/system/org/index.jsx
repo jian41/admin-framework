@@ -61,7 +61,7 @@ export default class extends React.Component {
         }
 
         const {params} = this.state
-        HttpUtil.post('sysOrg/pageTree', params).then(rs => {
+        HttpUtil.post('admin/sysOrg/pageTree', params).then(rs => {
             let treeData = rs;
             this.setState({treeData})
         }).finally(() => {
@@ -315,7 +315,7 @@ export default class extends React.Component {
         const dropKey = node.key;
         const dragKey = dragNode.key;
         console.log(dragNode.title, '->', node.title, 'dropToGap', dropToGap, dropPosition)
-        HttpUtil.post('/sysOrg/sort', {dropPosition, dropToGap, dropKey, dragKey}).then(this.loadTree)
+        HttpUtil.post('admin//sysOrg/sort', {dropPosition, dropToGap, dropKey, dragKey}).then(this.loadTree)
     };
 }
 

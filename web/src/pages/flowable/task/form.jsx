@@ -23,7 +23,7 @@ export default class extends React.Component {
         const {taskId, instanceId, formKey} = PageUtil.currentParams()
         this.setState({taskId, instanceId, formKey})
 
-        HttpUtil.get('/flowable/userClient/taskInfo', {id: taskId}).then(rs=>{
+        HttpUtil.get('admin/flowable/userClient/taskInfo', {id: taskId}).then(rs=>{
             console.log('任务信息',rs)
             this.setState({taskInfo:rs})
         })
@@ -41,7 +41,7 @@ export default class extends React.Component {
             }
 
             value.taskId = this.state.taskId
-            await HttpUtil.post("/flowable/userClient/handleTask", value)
+            await HttpUtil.post("admin//flowable/userClient/handleTask", value)
             history.replace('/flowable/task')
         } catch (error) {
             message.error(error)

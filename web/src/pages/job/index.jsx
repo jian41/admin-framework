@@ -132,13 +132,13 @@ export default class extends React.Component {
     }
 
     loadJobParamFields(className, jobData) {
-        HttpUtil.post("job/getJobParamFields", jobData || {}, {className}).then(rs => {
+        HttpUtil.post("admin/job/getJobParamFields", jobData || {}, {className}).then(rs => {
             this.setState({paramList: rs})
         })
     }
 
     onFinish = (values) => {
-        HttpUtil.post('job/save', values).then(rs => {
+        HttpUtil.post('admin/job/save', values).then(rs => {
             this.setState({formOpen: false})
             this.tableRef.current.reload();
         })
@@ -166,7 +166,7 @@ export default class extends React.Component {
                         新增
                     </Button>
                 }}
-                request={(params) => HttpUtil.pageData('job/page', params)}
+                request={(params) => HttpUtil.pageData('admin/job/page', params)}
                 columns={this.columns}
                 bordered={true}
             />

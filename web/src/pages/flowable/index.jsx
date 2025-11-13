@@ -80,7 +80,7 @@ export default class extends React.Component {
         })
     }
     onFinish = values => {
-        HttpUtil.post('flowable/model/save', values).then(rs => {
+        HttpUtil.post('admin/flowable/model/save', values).then(rs => {
             this.actionRef.current.reload()
             this.setState({formOpen: false})
         })

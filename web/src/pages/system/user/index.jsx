@@ -127,7 +127,7 @@ export default class extends React.Component {
 
 
     resetPwd(row) {
-        HttpUtil.post('/sysUser/resetPwd', {id: row.id}).then(rs => {
+        HttpUtil.post('admin//sysUser/resetPwd', {id: row.id}).then(rs => {
             Modal.success({
                 title: '重置密码成功',
                 content: rs
@@ -163,7 +163,7 @@ export default class extends React.Component {
 
 
     onFinish = values => {
-        HttpUtil.post('sysUser/save', values).then(rs => {
+        HttpUtil.post('admin/sysUser/save', values).then(rs => {
             this.setState({formOpen: false})
             this.tableRef.current.reload()
         })

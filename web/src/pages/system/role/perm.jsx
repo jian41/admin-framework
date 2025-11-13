@@ -87,7 +87,7 @@ export default class extends React.Component {
             menus.push(menuId)
             ArrUtil.addAll(perms, ks)
         }
-        HttpUtil.post('sysRole/savePerms', {id: this.roleId, perms, menus}).then(rs => {
+        HttpUtil.post('admin/sysRole/savePerms', {id: this.roleId, perms, menus}).then(rs => {
             //  Page.open(PageUtil.currentPathname(), PageUtil.currentLabel())
         })
     };
