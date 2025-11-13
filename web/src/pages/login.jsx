@@ -43,15 +43,15 @@ export default class login extends React.Component {
     submit = values => {
         this.setState({logging: true})
 
-        const crypt = new JSEncrypt();
         const pubkey = this.state.siteInfo.rsaPublicKey;
         if(!pubkey){
             message.error("未获取密钥，请刷新浏览器再试")
             return
         }
+        // 对密码加密
+        const crypt = new JSEncrypt();
         crypt.setPublicKey(pubkey);
-       // values.password = crypt.encrypt(values.password)
-
+        values.password = crypt.encrypt(values.password)
 
 
         HttpUtil.postForm('admin/auth/login', values).then(rs => {

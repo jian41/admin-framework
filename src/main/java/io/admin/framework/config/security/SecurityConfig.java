@@ -103,7 +103,6 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
-             //   .authenticationProvider(rsaDecryptingAuthenticationProvider) // 注册自定义 Provider
                 .build();
     }
 
