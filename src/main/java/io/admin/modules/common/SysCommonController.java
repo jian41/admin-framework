@@ -69,7 +69,7 @@ public class SysCommonController {
     @GetMapping("public/site-info")
     public AjaxResult siteInfo() {
         Dict data = new Dict();
-       data.put("captcha",sysConfigService.getMixed("sys.captcha", Boolean.class));
+        data.put("captcha",sysConfigService.getMixed("sys.captcha", Boolean.class));
         data.put("code",sysConfigService.getMixed("sys.captchaType",String.class));
         data.put("copyright",sysConfigService.getMixed("sys.copyright",String.class));
         data.put("loginBoxBottomTip",sysConfigService.getMixed("sys.loginBoxBottomTip",String.class));

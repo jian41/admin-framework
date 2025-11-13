@@ -1,11 +1,13 @@
 
 package io.admin.modules.system.service;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.StrUtil;
 import io.admin.common.utils.RequestTool;
 import io.admin.common.utils.tree.TreeTool;
+import io.admin.framework.config.SysProp;
 import io.admin.framework.config.data.DataProp;
 import io.admin.framework.config.data.sysconfig.ConfigDefinition;
 import io.admin.framework.config.data.sysconfig.ConfigGroupDefinition;
@@ -35,6 +37,9 @@ public class SysConfigService {
     @Resource
     private Environment env;
 
+    @Resource
+    private SysProp sysProp;
+
 
     /***
      * 最终的配置， 先取数据库，数据库不存在则取env
@@ -42,9 +47,14 @@ public class SysConfigService {
      */
     public <T> T getMixed(String key, Class<T> type) {
         String value = env.getProperty(key);
-
-
-
+        String sysKeyPrefix = "sys.";
+        if (StrUtil.isEmpty(value) && key.startsWith(sysKeyPrefix)) {
+            String sysKey = key.substring(sysKeyPrefix.length()); // 去掉前缀
+            Object fieldValue = BeanUtil.getFieldValue(sysProp, sysKey);
+            if (fieldValue != null) {
+                value = Convert.convert(String.class,fieldValue);
+            }
+        }
 
         SysConfig sysConfig = sysConfigDao.findByCode(key);
         if (sysConfig != null) {
