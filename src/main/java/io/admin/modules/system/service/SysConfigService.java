@@ -3,12 +3,11 @@ package io.admin.modules.system.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.convert.Convert;
-import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.StrUtil;
 import io.admin.common.utils.RequestTool;
 import io.admin.common.utils.tree.TreeTool;
 import io.admin.framework.config.SysProp;
-import io.admin.framework.config.data.DataProp;
+import io.admin.framework.config.data.ConfigDataDao;
 import io.admin.framework.config.data.sysconfig.ConfigDefinition;
 import io.admin.framework.config.data.sysconfig.ConfigGroupDefinition;
 import io.admin.framework.data.query.JpaQuery;
@@ -32,7 +31,7 @@ public class SysConfigService {
     private SysConfigDao sysConfigDao;
 
     @Resource
-    private DataProp dataProp;
+    private ConfigDataDao dataProp;
 
     @Resource
     private Environment env;

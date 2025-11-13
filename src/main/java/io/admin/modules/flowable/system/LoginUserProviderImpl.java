@@ -1,9 +1,7 @@
 package io.admin.modules.flowable.system;
 
 
-
-import io.admin.framework.perm.SecurityUtils;
-import io.admin.framework.perm.Subject;
+import io.admin.modules.common.LoginTool;
 import io.admin.modules.flowable.flowable.FlowableLoginUser;
 import io.admin.modules.flowable.flowable.FlowableLoginUserProvider;
 import io.admin.modules.system.dto.response.UserResponse;
@@ -27,16 +25,16 @@ public class LoginUserProviderImpl implements FlowableLoginUserProvider {
 
     @Override
     public FlowableLoginUser currentLoginUser() {
-        Subject subject = SecurityUtils.getSubject();
-        UserResponse user = sysUserService.findOneDto(subject.getId());
+        SysUser sysUser = LoginTool.getLoginUser();
+        UserResponse user = sysUserService.findOneDto(sysUser.getId());
 
         FlowableLoginUser fu = new FlowableLoginUser();
-        fu.setId(subject.getId());
-        fu.setName(subject.getName());
-        fu.setSuperAdmin(subject.hasPermission("*"));
-        fu.setDeptId(subject.getDeptId());
+        fu.setId(user.getId());
+        fu.setName(user.getName());
+        fu.setSuperAdmin(false);
+        fu.setDeptId(user.getDeptId());
         fu.setDeptName(user.getDeptLabel());
-        fu.setUnitName(subject.getUnitId());
+        fu.setUnitName(user.getUnitId());
         fu.setUnitName(user.getUnitLabel());
 
 

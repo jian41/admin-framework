@@ -1,6 +1,5 @@
 package io.admin.framework.config.data;
 
-import io.admin.framework.config.data.sysconfig.ConfigDefinition;
 import io.admin.framework.config.data.sysconfig.ConfigGroupDefinition;
 import io.admin.framework.config.data.sysmenu.MenuBadge;
 import io.admin.framework.config.data.sysmenu.MenuDefinition;
@@ -14,7 +13,7 @@ import java.util.List;
 @Configuration
 @ConfigurationProperties(prefix = "data")
 @Data
-public class DataProp {
+ class DataPropConfig {
 
     private List<MenuDefinition> menus = new ArrayList<>();
 

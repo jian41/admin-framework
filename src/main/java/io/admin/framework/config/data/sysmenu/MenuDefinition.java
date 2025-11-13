@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(of = "id")
 public class MenuDefinition  {
 
     private String id;

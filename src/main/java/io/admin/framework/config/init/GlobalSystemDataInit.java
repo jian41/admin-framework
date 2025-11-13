@@ -5,9 +5,7 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.RSA;
 import io.admin.common.utils.PasswordUtils;
 import io.admin.framework.config.SysProp;
-import io.admin.framework.config.data.DataProp;
-import io.admin.framework.config.data.sysconfig.ConfigDefinition;
-import io.admin.framework.config.data.sysconfig.ConfigGroupDefinition;
+import io.admin.framework.db.DbCacheDao;
 import io.admin.framework.dict.DictAnnHandler;
 import io.admin.framework.dict.DictFieldAnnHandler;
 import io.admin.modules.system.ConfigConsts;
@@ -17,7 +15,6 @@ import io.admin.modules.system.entity.DataPermType;
 import io.admin.modules.system.entity.SysRole;
 import io.admin.modules.system.entity.SysUser;
 import io.admin.modules.system.service.SysRoleService;
-import io.admin.framework.db.DbCacheDao;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,8 +68,7 @@ public class GlobalSystemDataInit implements CommandLineRunner {
     @Value("${spring.application.name}")
     String applicationName;
 
-    @Resource
-    DataProp dataProp;
+
 
     @Resource
     private SystemHookService systemHookService;

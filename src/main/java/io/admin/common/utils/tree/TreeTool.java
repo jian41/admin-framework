@@ -2,9 +2,7 @@ package io.admin.common.utils.tree;
 
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Dict;
-import org.apache.poi.ss.formula.functions.T;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -85,6 +83,8 @@ public class TreeTool {
             walk(children, getChildren, consumer);
         }
     }
+
+
 
     /**
      * 递归树并处理子树下的节点
