@@ -30,7 +30,7 @@ export default class extends React.Component {
 
         treeData: [],
         treeLoading: false,
-        draggable: false,
+        draggable: true,
     }
     actionRef = React.createRef();
     treeRef = React.createRef();
@@ -250,7 +250,8 @@ export default class extends React.Component {
     onDrop = ({dragNode, dropPosition, dropToGap, node}) => {
         const dropKey = node.key;
         const dragKey = dragNode.key;
-        console.log(dragNode.title, '->', node.title, 'dropToGap', dropToGap, dropPosition)
+        console.log(dragNode.title, '->', node.title, 'dropToGap:', dropToGap, "dropPosition:" ,dropPosition)
+        console.log('"%s","%s",%s,%s', dragNode.title, node.title,dropToGap,dropPosition);
         HttpUtil.post('admin/sysOrg/sort', {dropPosition, dropToGap, dropKey, dragKey}).then(this.loadTree)
     };
 }

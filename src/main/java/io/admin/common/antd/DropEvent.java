@@ -1,13 +1,32 @@
 package io.admin.common.antd;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+/**
+ *
+ * dropPosition	-1	放置在目标节点的 前面 (作为兄弟节点)。
+ * dropPosition	0	放置在目标节点的 内部 (作为子节点)。
+ * dropPosition	1	放置在目标节点的 后面 (作为兄弟节点)。
+ *
+ * dropToGap	true	放置在两个兄弟节点之间的 空隙 (Gap) 中。
+ * dropToGap	false	放置在目标节点 内部 (作为子节点)。
+ *
+ */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DropEvent {
 
-    String dropKey;
     String dragKey;
-    int dropPosition;
+    String dropKey;
+
     boolean dropToGap; // 两个节点的关系，true表示平级
+
+    // 放置的顺序， -1 表示最前面
+    int dropPosition;
+
 
 }

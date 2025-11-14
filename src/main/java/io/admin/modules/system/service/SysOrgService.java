@@ -51,7 +51,7 @@ public class SysOrgService extends BaseService<SysOrg> {
     /**
      * @param showDisabled 是否显示禁用
      */
-    public List<SysOrg> findByLoginUser( boolean showDept, boolean showDisabled) {
+    public List<SysOrg> findByLoginUser(boolean showDept, boolean showDisabled) {
         List<String> orgPermissions = LoginTool.getOrgPermissions();
         if (CollUtil.isEmpty(orgPermissions)) {
             return Collections.emptyList();
@@ -70,7 +70,6 @@ public class SysOrgService extends BaseService<SysOrg> {
         }
 
         List<SysOrg> list = sysOrgDao.findAll(q, Sort.by(SysOrg.Fields.type, SysOrg.Fields.seq));
-
 
 
         return list;
@@ -98,7 +97,6 @@ public class SysOrgService extends BaseService<SysOrg> {
 
         return super.saveOrUpdateByRequest(input, updateKeys);
     }
-
 
 
     /**
@@ -203,9 +201,9 @@ public class SysOrgService extends BaseService<SysOrg> {
         String deptId = user.getDeptId();
 
         // 如果没有找到部门领导，则机构树的上一级部门找
-        while (deptId != null){
+        while (deptId != null) {
             SysOrg dept = sysOrgDao.findOne(deptId);
-            if(dept == null || dept.getType() != OrgType.UNIT){
+            if (dept == null || dept.getType() != OrgType.UNIT) {
                 break;
             }
             SysUser leader = dept.getLeader();
@@ -229,15 +227,13 @@ public class SysOrgService extends BaseService<SysOrg> {
     }
 
     public List<SysOrg> findAll(JpaQuery<SysOrg> q, Sort sort) {
-        return sysOrgDao.findAll(q,sort);
+        return sysOrgDao.findAll(q, sort);
     }
 
     @Transactional
     public void sort(String dragKey, DropResult result) {
         SysOrg dragOrg = sysOrgDao.findOne(dragKey);
-        if(result.getParentKey() != null){
-            dragOrg.setPid(result.getParentKey());
-        }
+        dragOrg.setPid(result.getParentKey());
 
         List<String> sortedKeys = result.getSortedKeys();
         for (int i = 0; i < sortedKeys.size(); i++) {
