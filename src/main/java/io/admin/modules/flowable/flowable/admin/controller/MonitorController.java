@@ -1,12 +1,10 @@
 package io.admin.modules.flowable.flowable.admin.controller;
 
 
-
-
-
 import io.admin.common.dto.AjaxResult;
 import io.admin.common.utils.BeanTool;
 import io.admin.modules.flowable.flowable.FlowableLoginUserProvider;
+import io.admin.modules.flowable.flowable.dto.response.MonitorTaskResponse;
 import jakarta.annotation.Resource;
 import org.flowable.common.engine.api.query.Query;
 import org.flowable.engine.RepositoryService;
@@ -16,7 +14,7 @@ import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.repository.ProcessDefinitionQuery;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.engine.runtime.ProcessInstanceQuery;
-import org.flowable.task.api.TaskInfo;
+import org.flowable.task.api.Task;
 import org.flowable.task.api.TaskQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -78,10 +76,25 @@ public class MonitorController {
     @GetMapping("task")
     public AjaxResult task(Pageable pageable) {
         TaskQuery query = taskService.createTaskQuery();
+        List<Task> list = query.list();
 
-        Page page = this.findAll(TaskInfo.class, query, pageable);
+        List<MonitorTaskResponse> responseList = list.stream().map(t -> {
+            MonitorTaskResponse r = new MonitorTaskResponse();
+            r.setId(t.getId());
+            r.setName(t.getName());
+            r.setTaskDefinitionKey(t.getTaskDefinitionKey());
+            r.setProcessDefinitionId(t.getProcessDefinitionId());
+            r.setProcessInstanceId(t.getProcessInstanceId());
+            r.setAssignee(t.getAssignee());
+            r.setExecutionId(t.getExecutionId());
+            r.setStartTime(t.getInProgressStartTime());
+            r.setTenantId(t.getTenantId());
 
-        return AjaxResult.ok().data(page);
+            return r;
+        }).toList();
+
+
+        return AjaxResult.ok().data(new PageImpl<>(responseList));
     }
 
     private <T extends Query<?, ?>, U extends Object> Page findAll(Class cls, Query<T, U> query, Pageable pageable) {
