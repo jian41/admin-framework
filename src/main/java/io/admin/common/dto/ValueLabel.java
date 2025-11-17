@@ -10,8 +10,6 @@ public class ValueLabel {
     Object value;
 
     List<ValueLabel> children;
-
-
     public static ValueLabel of(Object value, String label) {
         ValueLabel labelValue = new ValueLabel();
 
@@ -20,10 +18,5 @@ public class ValueLabel {
 
         return labelValue;
     }
-
-
-
-
-
 
 }

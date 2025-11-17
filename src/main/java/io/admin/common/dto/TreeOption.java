@@ -1,5 +1,6 @@
 package io.admin.common.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.admin.common.utils.tree.TreeNode;
 import io.admin.common.utils.tree.TreeManager;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.util.function.Function;
  * antd 树状选择对象
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TreeOption implements TreeNode<TreeOption> {
     String title;
     String key;
@@ -21,9 +23,9 @@ public class TreeOption implements TreeNode<TreeOption> {
     List<TreeOption> children = new ArrayList<>();
 
 
-    boolean selectable = true;
-    boolean checkable = true;
-    boolean disabled = false;
+    Boolean selectable = true;
+    Boolean checkable = true;
+    Boolean disabled = false;
 
     Boolean isLeaf;
 
