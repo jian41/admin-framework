@@ -5,6 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import io.admin.common.utils.PasswordUtils;
+import io.admin.framework.config.SysProp;
 import io.admin.modules.system.entity.DataPermType;
 import io.admin.modules.system.entity.SysOrg;
 import io.admin.modules.system.entity.SysRole;
@@ -67,6 +68,9 @@ public class SysUserService extends BaseService<SysUser> {
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private SysProp sysProp;
+
 
     public UserResponse findOneDto(String id){
         SysUser user = sysUserDao.findOne(id);
@@ -101,18 +105,6 @@ public class SysUserService extends BaseService<SysUser> {
     }
 
 
-    /**
-     * 检查是否需要更新密码
-     *
-     * @param password
-     * @return
-     */
-    public boolean checkNeedUpdatePwd(String password) {
-        String defaultPassWord = sysConfigService.getDefaultPassWord();
-        return Objects.equals(password, defaultPassWord);
-    }
-
-
     public List<SysUser> findByUnit(Collection<String> org) {
         JpaQuery<SysUser> query = new JpaQuery<>();
         query.in(SysUser.Fields.unitId, org);
@@ -139,15 +131,6 @@ public class SysUserService extends BaseService<SysUser> {
         SysUser user = sysUserDao.findOne(userId);
         Set<SysRole> roles = user.getRoles();
         return roles.stream().map(BaseEntity::getId).collect(Collectors.toSet());
-    }
-
-
-    public boolean isPasswordSameAsDefault(String dbPwd) {
-        String defaultPassWord = SpringUtil.getBean(SysConfigService.class).getDefaultPassWord();
-
-        // 是否和默认密码相同
-
-        return PasswordUtils.checkpw(defaultPassWord, dbPwd);
     }
 
 
@@ -183,7 +166,7 @@ public class SysUserService extends BaseService<SysUser> {
     public SysUser saveOrUpdateByRequest(SysUser input, List<String> updateKeys) throws Exception {
         boolean isNew = input.isNew();
         if (isNew) {
-            String password = sysConfigService.getDefaultPassWord();
+            String password = sysProp.getDefaultPassword();
             input.setPassword(PasswordUtils.encode(password));
         }
 
@@ -227,7 +210,7 @@ public class SysUserService extends BaseService<SysUser> {
 
     @Transactional
     public void resetPwd(String id) {
-        String password = sysConfigService.getDefaultPassWord();
+        String password = sysProp.getDefaultPassword();
         this.resetPwd(id, password);
     }
 

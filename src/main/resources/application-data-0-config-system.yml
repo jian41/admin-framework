@@ -29,12 +29,7 @@ data:
         - code: sys.baseUrl
           name: 请求基础地址
           description: 非必填，可用于拼接完整请求地址
-        - code: sys.default.password
-          name: 默认密码
         - code: sys.jwtSecret
           name: jwt密码
-        - code: sys.printAssertException
-          name: 是否打印Assert方法抛出的异常
-          value-type: boolean
 
 

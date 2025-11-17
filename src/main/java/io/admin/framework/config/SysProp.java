@@ -91,4 +91,6 @@ public class SysProp {
     private String resetAdminPwd;
 
     private boolean printException;
+
+    private String defaultPassword;
 }

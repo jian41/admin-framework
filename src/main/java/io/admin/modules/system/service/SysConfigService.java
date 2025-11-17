@@ -10,7 +10,6 @@ import io.admin.framework.config.SysProp;
 import io.admin.framework.config.data.ConfigDataDao;
 import io.admin.framework.config.data.sysconfig.ConfigDefinition;
 import io.admin.framework.config.data.sysconfig.ConfigGroupDefinition;
-import io.admin.framework.data.query.JpaQuery;
 import io.admin.modules.system.dao.SysConfigDao;
 import io.admin.modules.system.dto.response.SysConfigResponse;
 import io.admin.modules.system.entity.SysConfig;
@@ -96,46 +95,6 @@ public class SysConfigService {
             return null;
         }
         return sysConfig.getValue();
-    }
-
-
-    /**
-     * 获取默认密码
-     */
-    public String getDefaultPassWord() {
-        return get("sys.default.password");
-    }
-
-
-    public Map<String, Object> siteInfo() {
-        Map<String, Object> map = this.findByPrefix("sys.siteInfo");
-        return map;
-    }
-
-
-    /**
-     * 通过前缀查询键值对
-     *
-     * @param prefix
-     * @return
-     */
-    public Map<String, Object> findByPrefix(String prefix) {
-        if (!prefix.endsWith(".")) {
-            prefix = prefix + ".";
-        }
-        JpaQuery<SysConfig> q = new JpaQuery<>();
-        q.like("id", prefix + "%");
-        List<SysConfig> list = sysConfigDao.findAll(q);
-
-        Map<String, Object> map = new HashMap<>();
-        for (SysConfig sysConfig : list) {
-            String k = sysConfig.getId();
-            k = k.replace(prefix, "");
-            Object v = sysConfig.getValue();
-            map.put(k, v);
-        }
-
-        return map;
     }
 
 

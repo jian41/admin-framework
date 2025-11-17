@@ -104,8 +104,6 @@ public class GlobalSystemDataInit implements CommandLineRunner {
         RSA rsa = SecureUtil.rsa();
         sysConfigDao.init(ConfigConsts.RSA_PUBLIC_KEY, rsa.getPublicKeyBase64()); // 放到siteInfo, 前端可获取
         sysConfigDao.init( ConfigConsts.RSA_PRIVATE_KEY, rsa.getPrivateKeyBase64());
-        sysConfigDao.init("sys.default.password", PasswordUtils.random());
-
     }
 
 

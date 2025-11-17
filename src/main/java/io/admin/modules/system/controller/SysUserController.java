@@ -9,6 +9,7 @@ import io.admin.common.dto.antd.Option;
 import io.admin.common.dto.antd.TreeOption;
 import io.admin.common.dto.table.Table;
 import io.admin.common.utils.tree.TreeTool;
+import io.admin.framework.config.SysProp;
 import io.admin.framework.config.argument.RequestBodyKeys;
 import io.admin.framework.config.security.HasPermission;
 import io.admin.framework.data.domain.BaseEntity;
@@ -54,6 +55,9 @@ public class SysUserController {
     @Resource
     private SysOrgService sysOrgService;
 
+    @Resource
+    private SysProp sysProp;
+
 
     @HasPermission("sysUser:view")
     @RequestMapping("page")
@@ -86,7 +90,7 @@ public class SysUserController {
         sysUserService.saveOrUpdateByRequest(input, updateFields);
 
         if (isNew) {
-            return AjaxResult.ok().msg("添加成功,密码：" + configService.getDefaultPassWord());
+            return AjaxResult.ok().msg("添加成功,密码：" + sysProp.getDefaultPassword());
         }
 
         return AjaxResult.ok();
@@ -128,7 +132,7 @@ public class SysUserController {
     @PostMapping("resetPwd")
     public AjaxResult resetPwd(@RequestBody SysUser user) {
         sysUserService.resetPwd(user.getId());
-        String defaultPassWord = configService.getDefaultPassWord();
+        String defaultPassWord = sysProp.getDefaultPassword();
         return AjaxResult.ok().msg("重置成功,新密码为：" + defaultPassWord).data("新密码：" + defaultPassWord);
     }
 
