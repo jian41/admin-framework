@@ -17,7 +17,7 @@ import lombok.experimental.FieldNameConstants;
 @Entity
 @Getter
 @Setter
-@Table(uniqueConstraints = {@UniqueConstraint(name = "uk_sys_manual", columnNames = {"name","version"})})
+@Table(uniqueConstraints = {@UniqueConstraint(name = "uk_sys_manual", columnNames = {"name", "version"})})
 @FieldNameConstants
 public class SysManual extends BaseEntity {
 
@@ -27,16 +27,16 @@ public class SysManual extends BaseEntity {
     @Remark("名称")
     @Column(length = 100)
     @Size(max = 100, message = "名称长度不能超过100个字符")
-    String name;
+    private String name;
 
     @NotNull
     @Remark("版本")
     @Positive(message = "版本号必须为正整数")
-    Integer version;
+    private Integer version;
 
     @Remark("文件")
     @Column(length = 32)
     @Size(max = 32, message = "文件ID长度不能超过32个字符")
-    String fileId;
+    private String fileId;
 
 }
