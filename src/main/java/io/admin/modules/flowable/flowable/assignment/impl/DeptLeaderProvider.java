@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.List;
 
-import static io.admin.modules.flowable.flowable.FlowableManager.VAR_DEPT_LEADER;
+import static io.admin.modules.flowable.flowable.FlowableManagerImpl.VAR_DEPT_LEADER;
 
 @Component
 public class DeptLeaderProvider implements AssignmentTypeProvider {
