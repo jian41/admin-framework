@@ -1,15 +1,15 @@
 
 package io.admin.modules.system.service;
 
-import io.admin.framework.data.service.BaseService;
 import io.admin.common.dto.AjaxResult;
-import io.admin.framework.log.Log;
 import io.admin.common.utils.IpAddressTool;
 import io.admin.common.utils.RequestTool;
-import io.admin.modules.common.LoginTool;
+import io.admin.framework.config.security.LoginUser;
+import io.admin.framework.data.service.BaseService;
+import io.admin.framework.log.Log;
+import io.admin.modules.common.LoginUtils;
 import io.admin.modules.system.dao.SysOpLogDao;
 import io.admin.modules.system.entity.SysLog;
-import io.admin.modules.system.entity.SysUser;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class SysLogService extends BaseService<SysLog> {
         HttpServletRequest request = RequestTool.currentRequest();
         String ip = IpAddressTool.getIp(request);
 
-        SysUser loginUser = LoginTool.getLoginUser();
+        LoginUser loginUser = LoginUtils.getUser();
         if (loginUser == null) {
             return;
         }

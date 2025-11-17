@@ -1,11 +1,11 @@
 package io.admin.modules.system.controller;
 
 import io.admin.common.dto.AjaxResult;
-import io.admin.modules.common.LoginTool;
+import io.admin.framework.config.security.LoginUser;
+import io.admin.modules.common.LoginUtils;
 import io.admin.modules.system.dto.request.UpdatePwdRequest;
 import io.admin.modules.system.dto.response.UserCenterInfo;
 import io.admin.modules.system.dto.response.UserResponse;
-import io.admin.modules.system.entity.SysUser;
 import io.admin.modules.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +23,7 @@ public class UserCenterController {
 
     @RequestMapping("info")
     public AjaxResult info() {
-        SysUser sysUser = LoginTool.getLoginUser();
+        LoginUser sysUser = LoginUtils.getUser();
 
         UserResponse user = sysUserService.findOneDto(sysUser.getId());
 
@@ -43,9 +43,8 @@ public class UserCenterController {
 
     @PostMapping("updatePwd")
     public AjaxResult updatePwd(@RequestBody UpdatePwdRequest request) {
-        SysUser user = LoginTool.getLoginUser();
         String newPassword = request.getNewPassword();
-        sysUserService.updatePwd(user.getId(), newPassword);
+        sysUserService.updatePwd(LoginUtils.getUserId(), newPassword);
         return AjaxResult.ok();
     }
 }

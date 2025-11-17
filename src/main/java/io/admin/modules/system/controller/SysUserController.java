@@ -15,7 +15,7 @@ import io.admin.framework.data.domain.BaseEntity;
 import io.admin.framework.data.query.JpaQuery;
 import io.admin.framework.log.Log;
 import io.admin.framework.pojo.param.DropdownParam;
-import io.admin.modules.common.LoginTool;
+import io.admin.modules.common.LoginUtils;
 import io.admin.modules.system.dto.request.GrantUserPermRequest;
 import io.admin.modules.system.dto.response.UserResponse;
 import io.admin.modules.system.entity.OrgType;
@@ -143,7 +143,7 @@ public class SysUserController {
         }
 
         // 权限过滤
-        Collection<String> orgIds = LoginTool.getOrgPermissions();
+        Collection<String> orgIds = LoginUtils.getOrgPermissions();
         if (CollUtil.isNotEmpty(orgIds)) {
             query.addSubOr(q -> {
                 q.in(SysUser.Fields.unitId, orgIds);
@@ -207,7 +207,7 @@ public class SysUserController {
             return AjaxResult.ok().data(Collections.emptyList());
         }
 
-        Collection<String> orgPermissions = LoginTool.getOrgPermissions();
+        Collection<String> orgPermissions = LoginUtils.getOrgPermissions();
         List<SysUser> userList = sysUserService.findByUnit(orgPermissions);
 
         List<TreeOption> orgOptions = orgList.stream().map(o -> new TreeOption(o.getName(), o.getId(), o.getPid())).toList();

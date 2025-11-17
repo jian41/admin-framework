@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Slf4j
-public class LoginTool {
+public class LoginUtils {
     public static String getUserId() {
         LoginUser user = getUser();
         if (user == null) {

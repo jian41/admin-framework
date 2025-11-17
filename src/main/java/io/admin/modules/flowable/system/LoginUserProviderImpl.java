@@ -1,7 +1,8 @@
 package io.admin.modules.flowable.system;
 
 
-import io.admin.modules.common.LoginTool;
+import io.admin.framework.config.security.LoginUser;
+import io.admin.modules.common.LoginUtils;
 import io.admin.modules.flowable.flowable.FlowableLoginUser;
 import io.admin.modules.flowable.flowable.FlowableLoginUserProvider;
 import io.admin.modules.system.dto.response.UserResponse;
@@ -25,7 +26,7 @@ public class LoginUserProviderImpl implements FlowableLoginUserProvider {
 
     @Override
     public FlowableLoginUser currentLoginUser() {
-        SysUser sysUser = LoginTool.getLoginUser();
+        LoginUser sysUser = LoginUtils.getUser();
         UserResponse user = sysUserService.findOneDto(sysUser.getId());
 
         FlowableLoginUser fu = new FlowableLoginUser();

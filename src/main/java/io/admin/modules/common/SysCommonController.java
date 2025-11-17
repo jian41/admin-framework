@@ -8,6 +8,7 @@ import io.admin.common.dto.AjaxResult;
 import io.admin.common.utils.tree.TreeTool;
 import io.admin.framework.config.SysProp;
 import io.admin.framework.config.data.sysmenu.MenuDefinition;
+import io.admin.framework.config.security.LoginUser;
 import io.admin.modules.common.dto.response.LoginDataResponse;
 import io.admin.modules.common.dto.response.LoginInfoResponse;
 import io.admin.modules.system.ConfigConsts;
@@ -103,7 +104,7 @@ public class SysCommonController {
             return AjaxResult.err("未登录");
         }
 
-        SysUser user = LoginTool.getLoginUser();
+        LoginUser user = LoginUtils.getUser();
         boolean login = user != null;
         if (!login) {
             return AjaxResult.err("未登录");
@@ -113,8 +114,8 @@ public class SysCommonController {
         r.setDictTree(sysDictService.tree());
 
 
-        List<String> permissions = LoginTool.getPermissions();
-        List<String> roles = LoginTool.getRoles();
+        List<String> permissions = LoginUtils.getPermissions();
+        List<String> roles = LoginUtils.getRoles();
         List<SysRole> roleList = roleService.findAllByCode(roles);
         String roleNames = roleList.stream().map(SysRole::getName).collect(Collectors.joining(","));
 
@@ -124,7 +125,7 @@ public class SysCommonController {
         userResponse.setOrgName(sysOrgService.getNameById(user.getUnitId()));
         userResponse.setDeptName(sysOrgService.getNameById(user.getDeptId()));
         userResponse.setPermissions(permissions);
-        userResponse.setAccount(user.getAccount());
+        userResponse.setAccount(user.getUsername());
         userResponse.setRoleNames(roleNames);
         userResponse.setMessageCount(sysUserMessageService.countUnReadByUser(user.getId()));
         r.setLoginInfo(userResponse);
@@ -138,7 +139,7 @@ public class SysCommonController {
      */
     @GetMapping("menuInfo")
     public AjaxResult menuInfo() {
-        String account = LoginTool.getUsername();
+        String account = LoginUtils.getUser().getUsername();
 
         SysUser user = sysUserService.findByAccount(account);
         Set<SysRole> roles = user.getRoles();
