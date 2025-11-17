@@ -1,7 +1,7 @@
 package io.admin.modules.flowable.system;
 
 
-import io.admin.modules.flowable.flowable.FlowableMasterDataProvider;
+import io.admin.modules.flowable.core.FlowableMasterDataProvider;
 import io.admin.modules.system.entity.SysUser;
 import io.admin.modules.system.service.SysOrgService;
 import io.admin.modules.system.service.SysUserService;

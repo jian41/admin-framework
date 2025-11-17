@@ -8,18 +8,18 @@ import io.admin.common.dto.AjaxResult;
 import io.admin.common.utils.BeanTool;
 import io.admin.common.utils.DateFormatTool;
 import io.admin.common.utils.ImgTool;
-import io.admin.modules.flowable.flowable.FlowableLoginUser;
-import io.admin.modules.flowable.flowable.FlowableLoginUserProvider;
-import io.admin.modules.flowable.flowable.FlowableManager;
+import io.admin.modules.flowable.core.FlowableLoginUser;
+import io.admin.modules.flowable.core.FlowableLoginUserProvider;
+import io.admin.modules.flowable.core.FlowableManager;
 
-import io.admin.modules.flowable.flowable.FlowableMasterDataProvider;
+import io.admin.modules.flowable.core.FlowableMasterDataProvider;
 import io.admin.modules.flowable.admin.entity.ConditionVariable;
 import io.admin.modules.flowable.admin.entity.SysFlowableModel;
 import io.admin.modules.flowable.admin.service.MyTaskService;
 import io.admin.modules.flowable.admin.service.SysFlowableModelService;
-import io.admin.modules.flowable.flowable.dto.TaskVo;
-import io.admin.modules.flowable.flowable.dto.request.HandleTaskRequest;
-import io.admin.modules.flowable.flowable.dto.response.CommentResult;
+import io.admin.modules.flowable.core.dto.TaskVo;
+import io.admin.modules.flowable.core.dto.request.HandleTaskRequest;
+import io.admin.modules.flowable.core.dto.response.CommentResult;
 
 
 

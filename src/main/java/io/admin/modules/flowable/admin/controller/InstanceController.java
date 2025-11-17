@@ -3,7 +3,7 @@ package io.admin.modules.flowable.admin.controller;
 
 import io.admin.common.dto.AjaxResult;
 import io.admin.modules.flowable.admin.service.MyTaskService;
-import io.admin.modules.flowable.flowable.dto.TaskVo;
+import io.admin.modules.flowable.core.dto.TaskVo;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;

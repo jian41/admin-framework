@@ -3,12 +3,12 @@ package io.admin.modules.flowable.admin.service;
 
 
 import io.admin.common.utils.SpringTool;
-import io.admin.modules.flowable.flowable.FlowableLoginUser;
-import io.admin.modules.flowable.flowable.FlowableMasterDataProvider;
-import io.admin.modules.flowable.flowable.FlowableProperties;
-import io.admin.modules.flowable.flowable.assignment.AssignmentService;
-import io.admin.modules.flowable.flowable.assignment.AssignmentTypeProvider;
-import io.admin.modules.flowable.flowable.dto.TaskHandleResult;
+import io.admin.modules.flowable.core.FlowableLoginUser;
+import io.admin.modules.flowable.core.FlowableMasterDataProvider;
+import io.admin.modules.flowable.core.FlowableProperties;
+import io.admin.modules.flowable.core.assignment.AssignmentService;
+import io.admin.modules.flowable.core.assignment.AssignmentTypeProvider;
+import io.admin.modules.flowable.core.dto.TaskHandleResult;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.model.BpmnModel;

@@ -1,9 +1,9 @@
 package io.admin.modules.flowable.demo;
 
-import io.admin.modules.flowable.flowable.FlowableEventType;
-import io.admin.modules.flowable.flowable.definition.FormKeyDescription;
-import io.admin.modules.flowable.flowable.definition.ProcessDefinition;
-import io.admin.modules.flowable.flowable.definition.ProcessDefinitionDescription;
+import io.admin.modules.flowable.core.FlowableEventType;
+import io.admin.modules.flowable.core.definition.FormKeyDescription;
+import io.admin.modules.flowable.core.definition.ProcessDefinition;
+import io.admin.modules.flowable.core.definition.ProcessDefinitionDescription;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

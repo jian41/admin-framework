@@ -3,8 +3,8 @@ package io.admin.modules.flowable.system;
 
 import io.admin.framework.config.security.LoginUser;
 import io.admin.modules.common.LoginUtils;
-import io.admin.modules.flowable.flowable.FlowableLoginUser;
-import io.admin.modules.flowable.flowable.FlowableLoginUserProvider;
+import io.admin.modules.flowable.core.FlowableLoginUser;
+import io.admin.modules.flowable.core.FlowableLoginUserProvider;
 import io.admin.modules.system.dto.response.UserResponse;
 import io.admin.modules.system.entity.SysOrg;
 import io.admin.modules.system.entity.SysUser;
