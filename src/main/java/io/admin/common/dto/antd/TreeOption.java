@@ -1,84 +1,52 @@
 package io.admin.common.dto.antd;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import io.admin.common.utils.tree.TreeNode;
-import io.admin.common.utils.tree.TreeManager;
-import lombok.Data;
+// https://ant.design/components/tree-cn#treenode-props
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.List;
 
-/**
- * antd 树状选择对象
- */
 @Data
+@EqualsAndHashCode(of = "key")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TreeOption implements TreeNode<TreeOption> {
-    String title;
-    String key;
+public class TreeOption {
 
-    String parentKey;
+    private String key;//	被树的 (default)ExpandedKeys / (default)CheckedKeys / (default)SelectedKeys 属性所用。注意：整个树范围内的所有节点的 key 值不能重复！	string	(内部计算出的节点位置)
+    private String title;//	标题	ReactNode	---
 
-    List<TreeOption> children = new ArrayList<>();
-
-
-    Boolean selectable ;
-    Boolean checkable ;
-    Boolean disabled ;
-
-    Boolean isLeaf;
-
-
-    Object data;
-
-
-    public Object getValue() {
-        return key;
-    }
-
-    /**
-     * 同 key，为了方便
-     *
-     *
-     */
-    @Override
-    public String getId() {
+    // 兼容选择框
+    //https://ant.design/components/tree-select-cn#treenode-props
+    public String getValue() {
         return key;
     }
 
 
-    /**
-     * 同 parentKey
-     *
-     *
-     */
-    @Override
-    public String getPid() {
-        return parentKey;
-    }
+    private Boolean checkable; //	当树为 checkable 时，设置独立节点是否展示 Checkbox	boolean	-
+    private Boolean disableCheckbox;//	禁掉 checkbox	boolean	false
+    private Boolean disabled;//	禁掉响应	boolean	false
+    private String icon;//	自定义图标。可接收组件，props 为当前节点 props	ReactNode | (props) => ReactNode	-
+    @JsonProperty("isLeaf")
+    private Boolean isLeaf;//	设置为叶子节点 (设置了 loadData 时有效)。为 false 时会强制将其作为父节点	boolean	-
+    private Boolean selectable;//	设置节点是否可被选中	boolean	true
 
 
-    @Override
-    public void setId(String id) {
-        this.setKey(id);
-    }
-
-    @Override
-    public void setPid(String pid) {
-        this.setParentKey(pid);
-    }
-
-    public TreeOption(String title, String key, String parentKey) {
-        this.title = title;
-        this.key = key;
-        this.parentKey = parentKey;
-    }
+    private List<TreeOption> children;
 
 
-    public static List<TreeOption> convertTree(List<TreeOption> list) {
-        TreeManager<TreeOption> tm = TreeManager.of(list);
-        return tm.getTree();
-    }
+    // DirectoryTree props
+    private String expandAction; //	目录展开逻辑，可选：false | click | doubleClick	string | boolean	click
+
+    // 额外字段，方便构建树
+    @JsonIgnore
+    private String parentKey;
+
+    // 直接设置icon前端无法显示的，设置成这个，前端再转换为ReactNode
+    private String iconName;
+
 
 
 }

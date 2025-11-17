@@ -8,7 +8,6 @@ import io.admin.framework.data.query.JpaQuery;
 import io.admin.common.dto.table.Table;
 import io.admin.common.dto.AjaxResult;
 import io.admin.common.dto.antd.Option;
-import io.admin.common.dto.antd.TreeOption;
 import io.admin.framework.log.Log;
 import io.admin.modules.common.LoginTool;
 import io.admin.modules.system.dto.request.GrantUserPermRequest;

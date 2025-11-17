@@ -1,7 +1,6 @@
 package io.admin.framework.interceptor;
 
 import io.admin.common.utils.JsonUtils;
-import io.admin.common.utils.ann.PublicRequest;
 import io.admin.common.dto.AjaxResult;
 import io.admin.modules.system.service.JwtService;
 import jakarta.annotation.Resource;

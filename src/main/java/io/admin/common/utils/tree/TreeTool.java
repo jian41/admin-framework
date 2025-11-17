@@ -3,7 +3,7 @@ package io.admin.common.utils.tree;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
-import io.admin.common.dto.antd.TreeNodeItem;
+import io.admin.common.dto.antd.TreeOption;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -15,13 +15,13 @@ import java.util.function.Function;
  */
 public class TreeTool {
 
-    public static List<TreeNodeItem> buildTree(List<TreeNodeItem> list) {
-        return buildTree(list,TreeNodeItem::getKey, TreeNodeItem::getParentKey, TreeNodeItem::getChildren, TreeNodeItem::setChildren);
+    public static List<TreeOption> buildTree(List<TreeOption> list) {
+        return buildTree(list, TreeOption::getKey, TreeOption::getParentKey, TreeOption::getChildren, TreeOption::setChildren);
     }
 
-    public static Map<String,TreeNodeItem>  treeToMap(List<TreeNodeItem> tree) {
-        Map<String,TreeNodeItem> map = new HashMap<>();
-        walk(tree,TreeNodeItem::getChildren,node->{
+    public static Map<String, TreeOption>  treeToMap(List<TreeOption> tree) {
+        Map<String, TreeOption> map = new HashMap<>();
+        walk(tree, TreeOption::getChildren, node->{
             map.put(node.getKey(), node);
         });
         return map;

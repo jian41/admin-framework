@@ -1,7 +1,7 @@
 package io.admin.common.utils.tree.drop;
 
 import io.admin.common.dto.antd.DropEvent;
-import io.admin.common.dto.antd.TreeNodeItem;
+import io.admin.common.dto.antd.TreeOption;
 import io.admin.common.utils.tree.TreeTool;
 import org.springframework.util.Assert;
 
@@ -17,25 +17,25 @@ public class TreeDropTool {
      * 计算拖拽排序
      */
 
-    public static DropResult onDrop(DropEvent e, List<TreeNodeItem> tree) {
+    public static DropResult onDrop(DropEvent e, List<TreeOption> tree) {
         e.setDropPositionEnum(DropEvent.DropPositionEnum.valueOf(e.getDropPosition()));
 
-        Map<String, TreeNodeItem> keyMap = TreeTool.treeToMap(tree);
+        Map<String, TreeOption> keyMap = TreeTool.treeToMap(tree);
 
-        TreeNodeItem dragNode = keyMap.get(e.getDragKey());
-        TreeNodeItem dropNode = keyMap.get(e.getDropKey());
+        TreeOption dragNode = keyMap.get(e.getDragKey());
+        TreeOption dropNode = keyMap.get(e.getDropKey());
         Assert.notNull(dragNode, "拖拽的节点不存在");
         Assert.notNull(dropNode, "放置的节点不存在");
 
         DropResult result = new DropResult();
         result.parentKey = e.isDropToGap() ? dropNode.getParentKey() : dropNode.getKey();
-        TreeNodeItem parentNode = keyMap.get(result.getParentKey());
-        List<TreeNodeItem> siblings = parentNode != null ? parentNode.getChildren() : tree; // 如果父节点为空，说明拖拽到了根节点平级了
+        TreeOption parentNode = keyMap.get(result.getParentKey());
+        List<TreeOption> siblings = parentNode != null ? parentNode.getChildren() : tree; // 如果父节点为空，说明拖拽到了根节点平级了
 
 
         List<String> keys = new ArrayList<>();
         if(siblings != null){
-            for (TreeNodeItem child : siblings) {
+            for (TreeOption child : siblings) {
                 keys.add(child.getKey());
             }
         }

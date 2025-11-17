@@ -1,7 +1,6 @@
 package io.admin.modules.system.controller;
 
 import io.admin.common.dto.AjaxResult;
-import io.admin.common.utils.ann.PublicRequest;
 import io.admin.framework.config.argument.RequestBodyKeys;
 import io.admin.framework.config.security.HasPermission;
 import io.admin.framework.data.query.JpaQuery;
@@ -65,7 +64,6 @@ public class SysManualController  {
      * @param pageable
      * @return
      */
-    @PublicRequest
     @RequestMapping("pageForUser")
     public AjaxResult pageForUser(String searchText, @PageableDefault(direction = Sort.Direction.DESC, sort = {"name", "version"}) Pageable pageable) {
         JpaQuery<SysManual> q = new JpaQuery<>();

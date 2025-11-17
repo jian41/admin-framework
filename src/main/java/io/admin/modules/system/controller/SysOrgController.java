@@ -2,7 +2,7 @@
 package io.admin.modules.system.controller;
 
 import cn.hutool.core.util.StrUtil;
-import io.admin.common.dto.antd.TreeNodeItem;
+import io.admin.common.dto.antd.TreeOption;
 import io.admin.common.dto.AjaxResult;
 import io.admin.common.utils.tree.TreeTool;
 import io.admin.common.dto.antd.DropEvent;
@@ -121,7 +121,7 @@ public class SysOrgController {
     @HasPermission("sysOrg:save")
     public AjaxResult sort(@RequestBody DropEvent e) {
         List<SysOrg> nodes = sysOrgService.findAll();
-        List<TreeNodeItem> tree = list2Tree(nodes);
+        List<TreeOption> tree = list2Tree(nodes);
 
         DropResult dropResult = TreeDropTool.onDrop(e, tree);
 
@@ -159,14 +159,14 @@ public class SysOrgController {
     }
 
 
-    public List<TreeNodeItem> list2Tree(List<SysOrg> orgList) {
-        List<TreeNodeItem> list = orgList.stream().map(o -> {
+    public List<TreeOption> list2Tree(List<SysOrg> orgList) {
+        List<TreeOption> list = orgList.stream().map(o -> {
             String title = o.getName();
             if (!o.getEnabled()) {
                 title = title + " [禁用]";
             }
 
-            TreeNodeItem item = new TreeNodeItem();
+            TreeOption item = new TreeOption();
             item.setTitle(title);
             item.setKey(o.getId());
             item.setParentKey(o.getPid());
@@ -175,7 +175,7 @@ public class SysOrgController {
             return item;
         }).toList();
 
-        List<TreeNodeItem> tree = TreeTool.buildTree(list, TreeNodeItem::getKey, TreeNodeItem::getParentKey, TreeNodeItem::getChildren, TreeNodeItem::setChildren);
+        List<TreeOption> tree = TreeTool.buildTree(list, TreeOption::getKey, TreeOption::getParentKey, TreeOption::getChildren, TreeOption::setChildren);
 
         return tree;
     }
