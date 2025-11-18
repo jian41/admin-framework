@@ -1,5 +1,6 @@
-package io.admin.framework.data.config;
+package io.admin.framework.config;
 
+import io.admin.framework.data.config.HibernateEntityCommentIntegrator;
 import org.hibernate.jpa.boot.spi.IntegratorProvider;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
 import org.springframework.stereotype.Component;

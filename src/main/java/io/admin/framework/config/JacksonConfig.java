@@ -1,4 +1,4 @@
-package io.admin.framework.json;
+package io.admin.framework.config;
 
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

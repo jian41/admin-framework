@@ -1,4 +1,4 @@
-package io.admin.framework.data.config;
+package io.admin.framework.config;
 
 
 import io.admin.common.utils.DbUtils;
