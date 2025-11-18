@@ -65,7 +65,6 @@ public class RoleProvider implements AssignmentTypeProvider {
 
     @Override
     public XmlAttribute getXmlAttribute() {
-        //return "candidateGroups";
         return XmlAttribute.candidateGroups;
     }
 

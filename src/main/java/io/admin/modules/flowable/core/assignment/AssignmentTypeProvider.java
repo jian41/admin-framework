@@ -1,7 +1,5 @@
 package io.admin.modules.flowable.core.assignment;
 
-import org.apache.commons.lang3.NotImplementedException;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -50,22 +48,6 @@ public interface AssignmentTypeProvider {
     }
 
 
-    default boolean isRelativeGroup() {
-        return false;
-    }
-
-    /**
-     * startUserId 可以用于获取相对分组候选人, 如部门领导， 上级公司经理, 对于非相对角色，可为空
-     * 非相对分组可不实现
-     *
-     * @return
-     */
-    default Collection<String> findUsersByGroup(String startUserId, String groupId) {
-        if (getXmlAttribute() == XmlAttribute.candidateGroups) {
-            throw new NotImplementedException("当节点属于分组时，应实现该方法");
-        }
-        return null;
-    }
 
 
     /**
