@@ -84,7 +84,7 @@ public class SysFlowableModelService extends BaseService<SysFlowableModel> {
         mainProcess.setName(name);
 
         // 校验模型
-        validateModel(bpmnModel);
+        this.validateModel(bpmnModel);
 
         // 修改和检验模型
         for (FlowElement flowElement : mainProcess.getFlowElements()) {
@@ -172,6 +172,15 @@ public class SysFlowableModelService extends BaseService<SysFlowableModel> {
             String msg = translates.get(problem);
 
             Assert.state(false, StringUtils.defaultString(msg, error.getDefaultDescription()));
+        }
+        // task 必须命名
+        for (FlowElement flowElement : model.getMainProcess().getFlowElements()) {
+            if (flowElement instanceof UserTask) {
+                UserTask task = (UserTask) flowElement;
+                if (StringUtils.isEmpty(task.getName())) {
+                    throw new IllegalArgumentException("部署失败：存在用户任务未命名的节点");
+                }
+            }
         }
 
 
