@@ -19,7 +19,7 @@ import io.admin.framework.config.security.HasPermission;
 import io.admin.framework.config.argument.RequestBodyKeys;
 import io.admin.framework.persistence.BaseController;
 import io.admin.framework.data.domain.BaseEntity;
-import io.admin.framework.pojo.param.DropdownParam;
+import io.admin.common.dto.DropdownRequest;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -164,8 +164,8 @@ public class SysRoleController extends BaseController<SysRole> {
     }
 
     @RequestMapping("options")
-    public AjaxResult options(DropdownParam param) {
-        String searchText = param.getSearchText();
+    public AjaxResult options(DropdownRequest dropdownRequest) {
+        String searchText = dropdownRequest.getSearchText();
         List<SysRole> list = sysRoleService.findValid();
         if (searchText != null) {
             list = list.stream().filter(t -> t.getName().contains(searchText)).toList();

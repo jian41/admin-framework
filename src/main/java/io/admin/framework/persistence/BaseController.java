@@ -28,8 +28,7 @@ public abstract class BaseController<T extends Persistable<String>> {
 
     @Deprecated
     @RequestMapping("page")
-    public AjaxResult page(   String searchText,
-            @PageableDefault(direction = Sort.Direction.DESC, sort = "updateTime") Pageable pageable) throws Exception {
+    public AjaxResult page(   @PageableDefault(direction = Sort.Direction.DESC, sort = "updateTime") Pageable pageable) throws Exception {
         JpaQuery<T> q = new JpaQuery<>();
 
 

@@ -1,4 +1,4 @@
-package io.admin.framework.pojo.param;
+package io.admin.common.dto;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 下拉选择后台请求参数
  */
 @Data
-public class DropdownParam {
+public class DropdownRequest {
 
     String searchText;
 

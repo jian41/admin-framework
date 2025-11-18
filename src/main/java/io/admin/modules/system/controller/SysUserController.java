@@ -16,14 +16,13 @@ import io.admin.framework.config.security.refresh.PermissionStaleService;
 import io.admin.framework.data.domain.BaseEntity;
 import io.admin.framework.data.query.JpaQuery;
 import io.admin.framework.log.Log;
-import io.admin.framework.pojo.param.DropdownParam;
+import io.admin.common.dto.DropdownRequest;
 import io.admin.modules.common.LoginUtils;
 import io.admin.modules.system.dto.request.GrantUserPermRequest;
 import io.admin.modules.system.dto.response.UserResponse;
 import io.admin.modules.system.entity.OrgType;
 import io.admin.modules.system.entity.SysOrg;
 import io.admin.modules.system.entity.SysUser;
-import io.admin.modules.system.service.SysConfigService;
 import io.admin.modules.system.service.SysOrgService;
 import io.admin.modules.system.service.SysUserService;
 import jakarta.annotation.Resource;
@@ -146,8 +145,8 @@ public class SysUserController {
 
 
     @RequestMapping("options")
-    public AjaxResult options(DropdownParam param) {
-        String searchText = param.getSearchText();
+    public AjaxResult options(DropdownRequest dropdownRequest) {
+        String searchText = dropdownRequest.getSearchText();
         JpaQuery<SysUser> query = new JpaQuery<>();
 
         if (searchText != null) {
@@ -237,16 +236,16 @@ public class SysUserController {
     /**
      * 下拉表格
      *
-     * @param param
+     * @param dropdownRequest
      * @param pageable
      * @return
      */
     @RequestMapping("tableSelect")
-    public AjaxResult tableSelect(DropdownParam param, Pageable pageable) {
+    public AjaxResult tableSelect(DropdownRequest dropdownRequest, Pageable pageable) {
         JpaQuery<SysUser> q = new JpaQuery<>();
-        q.searchText(param.getSearchText(), SysUser.Fields.name, SysUser.Fields.account);
+        q.searchText(dropdownRequest.getSearchText(), SysUser.Fields.name, SysUser.Fields.account);
 
-        List<String> selected = param.getSelected();
+        List<String> selected = dropdownRequest.getSelected();
         if (CollUtil.isNotEmpty(selected)) {
             q.in("id", selected);
         }

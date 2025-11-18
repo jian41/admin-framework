@@ -7,7 +7,7 @@ import io.admin.framework.persistence.BaseController;
 import io.admin.framework.data.query.JpaQuery;
 import io.admin.common.dto.AjaxResult;
 import io.admin.modules.api.entity.ApiResource;
-import io.admin.framework.pojo.param.DropdownParam;
+import io.admin.common.dto.DropdownRequest;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,11 +25,11 @@ public class ApiResourceController extends BaseController<ApiResource> {
 
 
     @RequestMapping("tableSelect")
-    public AjaxResult tableSelect(DropdownParam param, @PageableDefault(sort = "id") Pageable pageable) {
+    public AjaxResult tableSelect(DropdownRequest dropdownRequest, @PageableDefault(sort = "id") Pageable pageable) {
         JpaQuery<ApiResource> q = new JpaQuery<>();
-        q.searchText(param.getSearchText(), ApiResource.Fields.name, ApiResource.Fields.action, ApiResource.Fields.desc);
+        q.searchText(dropdownRequest.getSearchText(), ApiResource.Fields.name, ApiResource.Fields.action, ApiResource.Fields.desc);
 
-        List<String> selected = param.getSelected();
+        List<String> selected = dropdownRequest.getSelected();
         if(CollUtil.isNotEmpty(selected)){
           q.in("id", selected);
         }
