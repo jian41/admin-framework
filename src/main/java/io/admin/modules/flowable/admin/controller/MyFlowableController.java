@@ -15,7 +15,6 @@ import io.admin.modules.flowable.core.FlowableService;
 import io.admin.modules.flowable.core.dto.request.HandleTaskRequest;
 import io.admin.modules.flowable.core.dto.response.CommentResponse;
 import io.admin.modules.flowable.core.dto.response.TaskResponse;
-import io.admin.modules.system.service.SysUserService;
 import lombok.AllArgsConstructor;
 import org.flowable.engine.HistoryService;
 import org.flowable.engine.TaskService;
@@ -48,27 +47,10 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MyFlowableController {
 
-
-
-
     private TaskService taskService;
-
-
     private HistoryService historyService;
-
-
     private SysFlowableModelService myFlowModelService;
-
-
-
-
-
-
-    private SysUserService sysUserService;
-
     private FlowableService flowableService;
-
-
     @GetMapping("todoCount")
     public AjaxResult todo() {
         String userId = LoginUtils.getUserId();
@@ -107,11 +89,8 @@ public class MyFlowableController {
         query.includeProcessVariables();
 
         long count = query.count();
-
         List<HistoricProcessInstance> list = query.listPage((int) pageable.getOffset(), pageable.getPageSize());
-
         List<Map<String, Object>> mapList = BeanTool.copyToListMap(list, HistoricProcessInstance.class);
-
 
         for (Map<String, Object> map : mapList) {
             String startUserId = (String) map.get("startUserId");
@@ -119,7 +98,6 @@ public class MyFlowableController {
                 map.put("startUserName", flowableService.getUserName(startUserId));
             }
         }
-
 
         return AjaxResult.ok().data(new PageImpl<>(mapList, pageable, count));
     }
@@ -237,9 +215,7 @@ public class MyFlowableController {
             }
         }
 
-
         return AjaxResult.ok().data(data);
     }
-
 
 }
