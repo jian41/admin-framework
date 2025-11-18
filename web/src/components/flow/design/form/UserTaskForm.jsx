@@ -177,7 +177,7 @@ export default class extends React.Component {
                                 {t.label}
                             </Select.Option>)}
                         <Select.Option key='assigneeExpression'
-                                       value='assigneeExpression'>分配给单个用户（表达式）</Select.Option>
+                                       value='assigneeExpression'>办理人表达式</Select.Option>
                     </Select>
 
                 </Form.Item>

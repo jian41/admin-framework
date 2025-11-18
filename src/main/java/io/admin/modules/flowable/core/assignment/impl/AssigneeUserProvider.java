@@ -1,9 +1,6 @@
 package io.admin.modules.flowable.core.assignment.impl;
 
 
-import io.admin.modules.flowable.core.assignment.AssignmentTypeProvider;
-import io.admin.modules.system.service.SysUserService;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,7 +26,7 @@ public class AssigneeUserProvider extends BaseUserProvider  {
 
     @Override
     public String getLabel() {
-        return "分配给单个用户";
+        return "办理人";
     }
 
 
