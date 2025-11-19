@@ -21,10 +21,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Configuration
@@ -40,17 +37,16 @@ public class ConfigDataDao {
 
     @PostConstruct
     public void init() {
-        Resource[] configFiles = this.getConfigFiles();
-        for (Resource configFile : configFiles) {
-            log.info("处理数据文件 {}",configFile.getFilename());
+        for (Resource configFile : this.getConfigFiles()) {
+            log.info("处理数据文件 {}", configFile.getFilename());
             DataPropConfig cur = this.parseResource(configFile);
             configs.addAll(cur.getConfigs());
 
 
             // 菜单打平，方便后续合并
             List<MenuDefinition> flatList = new ArrayList<>();
-            TreeTool.walk(cur.getMenus(), MenuDefinition::getChildren, (node,parent)-> {
-                if(parent != null){
+            TreeTool.walk(cur.getMenus(), MenuDefinition::getChildren, (node, parent) -> {
+                if (parent != null) {
                     node.setPid(parent.getId());
                 }
                 flatList.add(node);
@@ -73,15 +69,15 @@ public class ConfigDataDao {
         for (String key : multimap.keySet()) {
             Collection<MenuDefinition> values = multimap.get(key);
 
-            if(values.size() > 1){
+            if (values.size() > 1) {
                 log.info("开始合并菜单：{}", key);
                 MenuDefinition target = new MenuDefinition();
                 for (MenuDefinition menu : values) {
-                    BeanUtil.copyProperties(menu,target, CopyOptions.create().ignoreNullValue());
+                    BeanUtil.copyProperties(menu, target, CopyOptions.create().ignoreNullValue());
                 }
                 log.info("合并后的菜单为：{}", target);
                 targetList.add(target);
-            }else {
+            } else {
                 targetList.add(values.iterator().next());
             }
         }
@@ -89,7 +85,7 @@ public class ConfigDataDao {
         // 设置序号
         for (int i = 0; i < targetList.size(); i++) {
             MenuDefinition menuDefinition = targetList.get(i);
-            if(menuDefinition.getSeq() == null){
+            if (menuDefinition.getSeq() == null) {
                 menuDefinition.setSeq(i);
             }
 
@@ -106,6 +102,14 @@ public class ConfigDataDao {
 
         // 1. 查找所有匹配的文件
         Resource[] resources = resolver.getResources(MENU_CONFIG_PATTERN);
+
+        // 2. 排序，将包含framework的文件放在前面
+        Arrays.sort(resources, (o1, o2) -> {
+            if (o1.getFilename().contains("framework")) {
+                return -1;
+            }
+            return 0;
+        });
 
         return resources;
     }
