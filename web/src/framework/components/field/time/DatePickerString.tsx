@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker } from 'antd';
+import {DatePicker} from 'antd';
 import {valueToDate} from "./TimePickerTool";
 
 /**

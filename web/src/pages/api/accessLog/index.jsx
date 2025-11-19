@@ -1,8 +1,5 @@
-import {PlusOutlined} from '@ant-design/icons'
-import {Button, Card,InputNumber, Popconfirm,Modal,Form,Input,message} from 'antd'
 import React from 'react'
-import {ButtonList,dictValueTag, ViewBoolean,FieldDateRange,FieldDictSelect,FieldRadioBoolean, FieldDatePickerString, FieldDateTimePickerString,Page, HttpUtil, ProTable} from "@/framework";
-
+import {HttpUtil, Page, ProTable} from "@/framework";
 
 
 export default class extends React.Component {

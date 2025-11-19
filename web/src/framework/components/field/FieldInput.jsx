@@ -1,6 +1,5 @@
 import React from 'react';
-import {Input, Radio} from 'antd';
-
+import {Input} from 'antd';
 
 
 export class FieldInput extends React.Component {

@@ -1,11 +1,7 @@
 import React from 'react';
-import { Dropdown, Menu, Space } from 'antd';
-import { DownSquareTwoTone } from '@ant-design/icons';
+import {Dropdown, Menu, Space} from 'antd';
+import {DownSquareTwoTone} from '@ant-design/icons';
 import {PermUtil} from "../system";
-
-
-
-
 
 
 /**

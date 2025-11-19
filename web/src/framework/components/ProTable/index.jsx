@@ -1,9 +1,9 @@
-import {Button, Card, Divider, Form, Input, Table} from 'antd';
+import {Button, Form, Table} from 'antd';
 import Toolbar from './components/ToolBar';
 import React from "react";
 import './index.less'
-import {StrUtil} from "@/framework";
 import {SearchOutlined} from "@ant-design/icons";
+import {StrUtil} from "../../utils";
 
 
 export class ProTable extends React.Component {

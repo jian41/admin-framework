@@ -4,7 +4,9 @@ import {
     FieldImageBase64,
     FieldInput,
     FieldPassword,
-    FieldRadioBoolean, FieldSelect, FieldUploadImage
+    FieldRadioBoolean,
+    FieldSelect,
+    FieldUploadImage
 } from "../field";
 import {ViewBoolean, ViewImage, ViewPassword, ViewText} from "../view";
 

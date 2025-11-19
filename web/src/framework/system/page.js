@@ -1,5 +1,5 @@
 import {history} from "umi";
-import {StrUtil, UrlUtil} from "@/framework";
+import {StrUtil, UrlUtil} from "../utils";
 
 export class PageUtil {
 

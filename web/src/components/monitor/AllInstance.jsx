@@ -1,7 +1,6 @@
 import React from "react";
-import {ProTable} from "@/framework"
 import {Popconfirm} from "antd";
-import {HttpUtil} from "@/framework";
+import {HttpUtil, ProTable} from "../../framework";
 
 export default class extends React.Component {
 
@@ -65,7 +64,7 @@ export default class extends React.Component {
     return <ProTable    search={false}
       actionRef={this.tableRef}
       columns={this.columns}
-      request={(params, sort, filter) => HttpUtil.pageData('admin/flowable/monitor/processInstance', params, sort)}
+      request={(params) => HttpUtil.pageData('admin/flowable/monitor/processInstance', params)}
       rowKey='id'
       scroll={{
         x: 'max-content'

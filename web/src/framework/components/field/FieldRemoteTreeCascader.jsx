@@ -1,8 +1,8 @@
-import { Cascader, message, Spin } from 'antd';
+import {Cascader, message, Spin} from 'antd';
 
 import React from 'react';
 import {HttpUtil} from "../../system";
-import {TreeUtil} from "@/framework";
+import {TreeUtil} from "../../utils";
 
 
 /**

@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Form, Input, Modal, Tabs} from "antd";
+import {Button, Form, Modal, Tabs} from "antd";
 import AllDefinition from "../../components/monitor/AllDefinition";
 import AllInstance from "../../components/monitor/AllInstance";
 import {FieldUserSelect, HttpUtil, Page, ProTable} from "@/framework";

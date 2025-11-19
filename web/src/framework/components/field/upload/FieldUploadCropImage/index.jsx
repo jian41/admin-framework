@@ -1,9 +1,4 @@
-import {Upload} from 'antd';
-
 import React from 'react';
-import ImgCrop from 'antd-img-crop';
-import {PlusOutlined} from '@ant-design/icons';
-import {SysUtil} from "../../../../system";
 import {FieldUploadFile} from "../FieldUploadFile";
 
 

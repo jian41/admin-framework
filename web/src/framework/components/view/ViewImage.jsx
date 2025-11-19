@@ -1,7 +1,6 @@
 import React from 'react';
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 import {SysUtil} from "../../system";
-
 
 
 export class ViewImage extends React.Component {

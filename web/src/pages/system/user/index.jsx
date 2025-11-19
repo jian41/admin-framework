@@ -7,11 +7,13 @@ import {
     FieldOrgTreeSelect,
     FieldRadioBoolean,
     HttpUtil,
-    OrgTree, Page,
-    ProTable
-} from "@/framework";
+    OrgTree,
+    Page,
+    ProTable,
+    RoleTree
+} from "../../../framework";
 import UserPerm from "./UserPerm";
-import {RoleTree} from "@/framework";
+
 export default class extends React.Component {
 
     state = {

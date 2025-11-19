@@ -7,9 +7,9 @@ import {
     FieldRadioBoolean,
     HttpUtil,
     PageUtil,
-    ProTable
+    ProTable,
+    StrUtil
 } from "@/framework";
-import {StrUtil} from "@/framework";
 
 
 export default class extends React.Component {

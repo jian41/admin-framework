@@ -1,5 +1,5 @@
 import React from 'react';
-import { PermUtil} from "../system";
+import {PermUtil} from "../system";
 
 /**
  * 使用该组件，可以判断权限

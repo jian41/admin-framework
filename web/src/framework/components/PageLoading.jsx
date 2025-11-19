@@ -1,6 +1,6 @@
 import React from "react";
-import {Alert, Button, Modal, Spin} from "antd";
-import {theme} from "@/framework";
+import {Alert, Spin} from "antd";
+import {theme} from "../system";
 
 /**
  * 页面加载中的动画

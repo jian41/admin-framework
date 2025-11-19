@@ -1,6 +1,4 @@
 import React from 'react';
-import {Button, Modal, Popover, Tooltip} from 'antd';
-import {StrUtil} from "@/framework";
 
 
 export class ViewBoolean extends React.Component {

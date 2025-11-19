@@ -1,6 +1,7 @@
 import React from "react";
 import './index.less'
 import {Card, Empty, Spin} from "antd";
+
 export class Panel extends React.Component{
 
     render() {

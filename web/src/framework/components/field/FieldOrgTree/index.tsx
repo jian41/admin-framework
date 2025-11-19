@@ -4,7 +4,6 @@
 import React from "react";
 import {FieldProps} from "../FieldProps";
 import {Tree} from "antd";
-import {http} from "../../../system";
 import {LoadingOutlined} from "@ant-design/icons";
 
 interface Props extends FieldProps {

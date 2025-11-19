@@ -1,6 +1,5 @@
 import React from "react";
-import {Button, Card, Form} from "antd";
-import {FieldFileBase64, FieldUploadCropImage, FieldUploadFile, PageUtil} from "@/framework";
+import {Card} from "antd";
 
 export default class extends React.Component {
 

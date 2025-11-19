@@ -1,8 +1,8 @@
-import {Button, Form, Input, message, Table} from 'antd'
+import {Button, Input, Table} from 'antd'
 import React from 'react'
 import {DeleteOutlined, PlusOutlined} from "@ant-design/icons";
 import './index.less'
-import {ArrUtil} from "@/framework";
+import {ArrUtil} from "../../../utils";
 
 export class FieldEditTable extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {Alert, Col, Row, Table} from "antd";
+import {Alert, Table} from "antd";
 import {HttpUtil, Page} from "@/framework";
 import * as echarts from 'echarts';
 

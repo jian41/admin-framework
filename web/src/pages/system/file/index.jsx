@@ -1,14 +1,6 @@
 import {Button, Form, Input, Modal, Popconfirm} from 'antd'
 import React from 'react'
-import {
-    ButtonList,
-    FieldDateRange,
-    FieldDictSelect,
-    FieldUploadFile,
-    HttpUtil,
-    ProTable,
-    SysUtil
-} from "@/framework";
+import {ButtonList, FieldDateRange, FieldDictSelect, FieldUploadFile, HttpUtil, ProTable, SysUtil} from "@/framework";
 import {CloudUploadOutlined} from "@ant-design/icons";
 
 

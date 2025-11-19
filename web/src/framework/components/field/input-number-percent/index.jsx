@@ -1,4 +1,4 @@
-import { InputNumber } from 'antd';
+import {InputNumber} from 'antd';
 import React from 'react';
 
 export class InputNumberPercent extends React.Component {

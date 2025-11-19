@@ -1,8 +1,8 @@
-import { message, Spin, TreeSelect } from 'antd';
+import {Spin, TreeSelect} from 'antd';
 
 import React from 'react';
 import {HttpUtil} from "../../system";
-import {TreeUtil} from "@/framework";
+import {TreeUtil} from "../../utils";
 
 export class FieldRemoteTreeSelect extends React.Component {
   state = {

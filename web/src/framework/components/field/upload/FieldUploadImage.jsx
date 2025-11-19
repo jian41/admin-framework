@@ -1,8 +1,4 @@
-import { Modal, Upload } from 'antd';
-
 import React from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import {SysUtil} from "../../../system";
 import {FieldUploadFile} from "./FieldUploadFile";
 
 

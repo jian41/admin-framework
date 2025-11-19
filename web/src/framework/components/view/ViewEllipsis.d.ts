@@ -1,4 +1,3 @@
-import {CommonViewProps} from "./index";
 // @ts-ignore
 import React from "react";
 

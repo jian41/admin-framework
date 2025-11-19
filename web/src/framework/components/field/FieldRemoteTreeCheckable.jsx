@@ -1,10 +1,8 @@
-import {message, Spin, TreeSelect} from 'antd';
+import {Spin, TreeSelect} from 'antd';
 
 import React from 'react';
-import {TreeUtil} from "@/framework";
 import {HttpUtil} from "../../system";
-
-
+import {TreeUtil} from "../../utils";
 
 
 /**

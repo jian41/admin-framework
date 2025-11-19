@@ -1,4 +1,4 @@
-import {message, Spin, TreeSelect} from 'antd';
+import {message, TreeSelect} from 'antd';
 
 import React from 'react';
 import {HttpUtil} from "../../system";

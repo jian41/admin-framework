@@ -1,4 +1,4 @@
-import { Checkbox, Radio, Select } from 'antd';
+import {Checkbox, Radio, Select} from 'antd';
 import React from 'react';
 import {dictList, dictValue, dictValueTag} from "../../../system";
 

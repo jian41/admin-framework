@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 
 export interface ProModalProps {
   title: string;

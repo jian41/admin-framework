@@ -1,10 +1,10 @@
 import React from "react";
 import ImgCrop from "antd-img-crop";
-import {message, Modal, Upload} from "antd";
+import {Modal, Upload} from "antd";
 import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
 import {SysUtil} from "../../../system";
 import {ViewFile} from "../../view";
-import {ObjUtil} from "@/framework";
+import {ObjUtil} from "../../../utils";
 
 
 export class FieldUploadFile extends React.Component {

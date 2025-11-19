@@ -2,9 +2,7 @@ import {Badge, Dropdown} from "antd";
 import {NotificationOutlined, QuestionCircleOutlined, SettingOutlined, UserOutlined} from "@ant-design/icons";
 import React from "react";
 import {history} from "umi";
-import {HttpUtil, PageUtil, SysUtil} from "@/framework";
-import {isMobileDevice} from "@/framework";
-import {MsgBox} from "@/framework";
+import {HttpUtil, isMobileDevice, MsgBox, PageUtil, SysUtil} from "../../framework";
 
 
 const ID = 'header-right';

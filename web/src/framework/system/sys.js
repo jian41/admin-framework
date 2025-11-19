@@ -1,6 +1,4 @@
-import {StorageUtil, StrUtil, UrlUtil} from "@/framework";
-import {history} from "umi";
-import {PageUtil} from "./page";
+import {StorageUtil, UrlUtil} from "../utils";
 
 const SITE_INFO_KEY = "siteInfo"
 const LOGIN_INFO_KEY = "loginInfo"

@@ -3,10 +3,9 @@
  * 可以使用 url 或直接设置data
  */
 import React from 'react';
-import { Button, message } from 'antd';
+import {Button, message} from 'antd';
 
 import './index.less';
-import {http} from "../../../system";
 
 /*
 interface FlatMultipleSelectProps {

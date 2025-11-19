@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button, Modal, Popover, Tag, Tooltip} from 'antd';
-import {StrUtil} from "@/framework";
+import {Tag} from 'antd';
 
 
 export class ViewBooleanEnableDisable extends React.Component {

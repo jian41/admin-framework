@@ -1,6 +1,5 @@
 import React from "react";
-import {Checkbox, Input, Space} from "antd";
-import {EyeInvisibleOutlined, EyeOutlined} from "@ant-design/icons";
+import {Input} from "antd";
 
 export  class FieldPassword extends React.Component {
 

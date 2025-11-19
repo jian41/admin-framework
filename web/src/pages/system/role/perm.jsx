@@ -1,8 +1,7 @@
 import React from "react";
-import {Alert, Button, Card, Checkbox, Flex, Table, Typography} from "antd";
-import {HttpUtil, Page, PageUtil} from "@/framework";
+import {Alert, Button, Card, Checkbox, Table, Typography} from "antd";
 import {SaveOutlined} from "@ant-design/icons";
-import {ArrUtil} from "@/framework";
+import {ArrUtil, HttpUtil, PageUtil} from "../../../framework";
 
 export default class extends React.Component {
 

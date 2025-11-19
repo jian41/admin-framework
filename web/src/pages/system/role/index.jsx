@@ -1,16 +1,7 @@
 import {PlusOutlined} from '@ant-design/icons'
-import {Button, Form, Input, InputNumber, Modal, Popconfirm, Transfer, Tree, Typography} from 'antd'
+import {Button, Form, Input, InputNumber, Modal, Popconfirm, Transfer, Tree} from 'antd'
 import React from 'react'
-import {
-    ButtonList,
-    Ellipsis,
-    FieldRadioBoolean,
-    FieldTableSelect,
-    FieldTree,
-    HttpUtil,
-    Page, PageUtil,
-    ProTable
-} from "@/framework";
+import {ButtonList, Ellipsis, FieldRadioBoolean, HttpUtil, Page, PageUtil, ProTable} from "../../../framework";
 
 
 export default class extends React.Component {

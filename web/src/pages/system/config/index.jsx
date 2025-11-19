@@ -1,7 +1,7 @@
-import {Button, Card, Form, Modal, Popconfirm, Table} from 'antd'
+import {Button, Card, Form, Modal, Table} from 'antd'
 import React from 'react'
 
-import {ButtonList, HttpUtil, ProTable, ValueType} from '@/framework'
+import {ButtonList, HttpUtil, ValueType} from '@/framework'
 
 
 export default class extends React.Component {
