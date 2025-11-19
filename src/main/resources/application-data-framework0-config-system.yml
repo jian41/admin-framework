@@ -14,9 +14,6 @@ data:
           name: 登录背景图
         - code: sys.loginBoxBottomTip
           name: 登录框下面的提示
-        - code: sys.logo
-          name: 站点logo
-          value-type: img
         - code: sys.title
           name: 站点标题
         - code: sys.waterMark
