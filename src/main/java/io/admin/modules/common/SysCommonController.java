@@ -70,8 +70,9 @@ public class SysCommonController {
         data.put("captchaType", sysConfigService.getMixed("sys.captchaType", String.class));
         data.put("copyright", sysConfigService.getMixed("sys.copyright", String.class));
         data.put("loginBoxBottomTip", sysConfigService.getMixed("sys.loginBoxBottomTip", String.class));
-        data.put("logo", sysConfigService.getMixed("sys.logo", String.class));
-        data.put("title", sysConfigService.getMixed("sys.title", String.class));
+        data.put("logoUrl", sysProp.getLogoUrl());
+        data.put("title", sysProp.getTitle());
+
         data.put("waterMark", sysConfigService.getMixed("sys.waterMark", Boolean.class));
 
         // 将公钥发给前端，用于前端加密

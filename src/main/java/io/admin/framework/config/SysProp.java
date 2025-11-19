@@ -37,6 +37,7 @@ public class SysProp {
      * 系统标题
      */
     private String title = "管理系统";
+    private String logoUrl = "/logo.png";
     private String loginBoxBottomTip = "当前非涉密网络，严禁传输处理涉密信息";
 
     /**
