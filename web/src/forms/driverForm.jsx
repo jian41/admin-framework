@@ -1,6 +1,8 @@
 import {Form, Input} from "antd";
 
-export default function (){
+
+export default function (props){
+console.log(props)
 
     return <div>
         demo-司机表单
