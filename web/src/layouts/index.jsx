@@ -83,9 +83,6 @@ class _Layouts extends React.Component {
     }
 
 
-    reLogin = () => {
-        history.push('/login')
-    };
 
 
     renderContent = () => {
