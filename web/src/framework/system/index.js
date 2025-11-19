@@ -9,5 +9,5 @@ export * from './page'
 export  * from "./sys"
 
 export * from './http'
-export * from './FormRegistry'
+export * from './formRegistry'
 export * from './theme'
