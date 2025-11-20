@@ -138,8 +138,9 @@ public class SysUserController {
     @HasPermission("sysUser:resetPwd")
     @PostMapping("resetPwd")
     public AjaxResult resetPwd(@RequestBody SysUser user) {
-        sysUserService.resetPwd(user.getId());
         String defaultPassWord = sysProp.getDefaultPassword();
+        Assert.hasText(defaultPassWord,"未配置默认密码，请再配置sys.default-password");
+        sysUserService.resetPwd(user.getId());
         return AjaxResult.ok().msg("重置成功,新密码为：" + defaultPassWord).data("新密码：" + defaultPassWord);
     }
 
