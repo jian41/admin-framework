@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Card, Form, Input, message, Radio, Spin, Splitter,} from "antd";
 import InstanceInfo from "../../../components/InstanceInfo";
 import {history} from "umi";
-import {HttpUtil, Page, PageUtil} from "@/framework";
+import {HttpUtil, Page, PageUtil} from "../../../framework";
 
 export default class extends React.Component {
 
