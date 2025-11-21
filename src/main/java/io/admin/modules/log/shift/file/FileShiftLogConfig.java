@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.File;
 
+
 @Getter
 @Configuration
 public class FileShiftLogConfig {
@@ -35,7 +36,7 @@ public class FileShiftLogConfig {
 
 
     @PostConstruct
-    public void init() {
+    public void initLoggerConfig() {
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
         // Create and configure the SiftingAppender
