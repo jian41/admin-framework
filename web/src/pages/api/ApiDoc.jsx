@@ -117,7 +117,7 @@ export  class ApiDoc extends React.Component {
                         <Title level={5}>响应数据</Title>
                         <Table columns={this.columns} bordered
                                dataSource={[
-                            {name: 'code', type: 'int', required: true, desc: '返回码,成功返回0，其他表示操作错误'},
+                            {name: 'code', type: 'int', required: true, desc: '响应码，0表示成功'},
                             {name: 'message', type: 'String', required: false, desc: '结果提示信息'},
                             {name: 'data', type: api.returnType, required: false, desc: '返回数据'}
                         ]} size='small' pagination={false}>
