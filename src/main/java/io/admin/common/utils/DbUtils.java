@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.*;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -158,6 +159,28 @@ public class DbUtils {
 
         return list;
     }
+
+    // 这里默认使用mysql的分页
+    public <T> Page<T> findAll(Class<T> cls,Pageable pageable, String sql, Object... params) {
+        params = checkParam(params);
+
+        String countSql = "select count(*) from (" + sql + ") as t";
+        long count = this.findLong(countSql, params);
+
+        if(count == 0){
+            return new PageImpl<>(Collections.emptyList(), pageable, 0);
+        }
+
+
+        long offset = pageable.getOffset();
+        int pageSize = pageable.getPageSize();
+        sql = sql + " limit " + pageSize + " offset " + offset;
+        ResultSetHandler<List<T>> rsh = new BeanListHandler<>(cls);
+        List<T> list = this.query(sql, rsh, params);
+
+        return new PageImpl<>(list, pageable, count);
+    }
+
 
 
     public Map<String, Object> findOne(String sql, Object... params) {
@@ -518,6 +541,7 @@ public class DbUtils {
     private boolean hasOrderBy(String sql) {
         return sql.toLowerCase().contains("order by");
     }
+
 
 
 }
