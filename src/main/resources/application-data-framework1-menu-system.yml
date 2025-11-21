@@ -111,4 +111,4 @@ data:
           path: /api
           perms:
             - name: 接口管理
-              perm: api:manage
+              perm: api

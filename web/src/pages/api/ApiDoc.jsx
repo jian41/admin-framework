@@ -1,10 +1,10 @@
 import React from "react";
-import {HttpUtil, PageUtil} from "../../framework";
-import {Button, Descriptions, Table, Typography} from "antd";
+import {FieldSelect, HttpUtil, MsgBox, PageUtil} from "../../framework";
+import {Button, Descriptions, message, Space, Table, Typography} from "antd";
 
 const {Title, Paragraph, Text, Link} = Typography;
 
-export default class extends React.Component {
+export  class ApiDoc extends React.Component {
 
     state = {
         url: null,
@@ -30,13 +30,17 @@ export default class extends React.Component {
 
     componentDidMount() {
         const id = PageUtil.currentParams().id
-
-        HttpUtil.get('admin/apiAccount/docInfo', {id}).then(rs => {
-            this.setState(rs)
-        })
+        this.loadData(id);
 
         let url = window.location.protocol + '//' + window.location.host
         this.setState({url})
+    }
+
+    async loadData(id) {
+        const hide = message.loading('加载中...', 0)
+        const rs = await HttpUtil.get('admin/apiAccount/docInfo', {id})
+        this.setState(rs)
+        hide()
     }
 
     print() {
@@ -45,29 +49,32 @@ export default class extends React.Component {
 
     render() {
         const {apiList} = this.state
-        return <div style={{padding: 24}}>
-            <Button type='primary' onClick={this.print} className='no-print'>打印文档</Button>
-            <div id='doc-content'>
-                <Title level={1}>开发接口说明文档</Title>
+        return <div>
 
-                <Title level={2}>接口数据</Title>
+            <Space>
+                <FieldSelect url='admin/apiAccount/accountOptions' placeholder='请选择账号' onChange={v=>this.loadData(v)}/>
+                <Button type='primary' onClick={this.print} className='no-print'>打印文档</Button>
+            </Space>
+            <div id='doc-content'>
+                <Title level={1}>接口说明文档</Title>
+
+                <Title level={2}>一、基本信息</Title>
                 <Paragraph>
                     <Descriptions column={1} bordered size='small'>
                         <Descriptions.Item label='请求地址'>
                             {this.state.url}/api/gateway/路径
                         </Descriptions.Item>
                         <Descriptions.Item label='appId'>
-                            {this.state.appId}
+                            私发
                         </Descriptions.Item>
                         <Descriptions.Item label='appSecret'>
-                            ****** (私发给相应)
+                            私发
                         </Descriptions.Item>
                     </Descriptions>
 
                 </Paragraph>
 
 
-                <Title level={2}>1 接口说明</Title>
                 <Paragraph>
                     <Typography.Text>
                         <div>
@@ -78,7 +85,7 @@ export default class extends React.Component {
                 </Paragraph>
 
 
-                <Title level={4}>请求公共请求头说明</Title>
+                <Title level={4}>请求头</Title>
 
                 <Table columns={this.columns} bordered dataSource={[
                     {name: 'appId', type: 'String', required: true, desc: '账号标识,appId'},
@@ -87,7 +94,7 @@ export default class extends React.Component {
                 ]} size='small' pagination={false}>
                 </Table>
 
-                <Title level={4}>返回公共参数说明 </Title>
+                <Title level={4}>响应体 (json) </Title>
                 <Table columns={this.columns} bordered dataSource={[
                     {name: 'code', type: 'int', required: true, desc: '返回码,成功返回0，其他表示操作错误'},
                     {name: 'message', type: 'String', required: false, desc: '结果提示信息'},
@@ -95,12 +102,17 @@ export default class extends React.Component {
                 ]} size='small' pagination={false}>
                 </Table>
 
+                <Typography.Title level={4}>公共错误码</Typography.Title>
+                <Table columns={[
+                    {dataIndex:'code',title:'错误码'},
+                    {dataIndex:'message', title:'错误描述'}
+                ]} rowKey='code' bordered dataSource={this.state.errorList} size='small' pagination={false}>
+                </Table>
 
-
-                <Typography.Title level={2}>2 接口列表</Typography.Title>
+                <Typography.Title level={2}>二、接口列表</Typography.Title>
                 {apiList.map((api, index) => {
                     return <>
-                        <Typography.Title level={3}>{'2.' + (index + 1) + " " + api.name} </Typography.Title>
+                        <Typography.Title level={3}>{ api.name} </Typography.Title>
                         <p>功能描述：{api.desc}</p>
                         <p>请求路径： /api/gateway/{api.action}</p>
 
@@ -123,12 +135,7 @@ export default class extends React.Component {
                     </>
                 })}
 
-                <Typography.Title level={2}>3 公共错误码</Typography.Title>
-                <Table columns={[
-                    {dataIndex:'code',title:'错误码'},
-                    {dataIndex:'message', title:'错误描述'}
-                ]} rowKey='code' bordered dataSource={this.state.errorList} size='small' pagination={false}>
-                </Table>
+
             </div>
         </div>
     }

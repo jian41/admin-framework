@@ -2,6 +2,7 @@ package io.admin.modules.api.controller;
 
 import cn.hutool.core.lang.Dict;
 import io.admin.Build;
+import io.admin.common.dto.antd.Option;
 import io.admin.framework.config.argument.RequestBodyKeys;
 import io.admin.framework.config.security.HasPermission;
 import io.admin.framework.data.query.JpaQuery;
@@ -40,13 +41,12 @@ public class ApiAccountController  {
 
 
 
-    @HasPermission("api:account:docInfo")
+    @HasPermission("api")
     @GetMapping("docInfo")
     public AjaxResult docInfo(String id) {
-        ApiAccount acc = service.findByRequest(id);
-        List<ApiResource> list = accountResourceService.findByAccount(acc);
+        List<ApiResource> list = apiResourceService.findAll();
 
-        list = apiResourceService.findAll();
+
         list = apiResourceService.removeNotExist(list);
 
         for (ApiResource r : list) {
@@ -61,7 +61,6 @@ public class ApiAccountController  {
         Dict resultData = new Dict();
         resultData.put("apiList", list);
         resultData.put("frameworkVersion", Build.getFrameworkVersion());
-        resultData.put("appId", acc.getAppId());
 
         List<Dict> errorList = new ArrayList<>();
         for (ApiErrorCode value : ApiErrorCode.values()) {
@@ -93,12 +92,21 @@ public class ApiAccountController  {
         return AjaxResult.ok().msg("保存成功");
     }
 
-    @HasPermission("apiAccount:delete")
+    @HasPermission("api")
     @RequestMapping("delete")
     public AjaxResult delete(String id) {
         service.deleteByRequest(id);
         return AjaxResult.ok().msg("删除成功");
     }
+
+    @HasPermission("api")
+    @GetMapping("accountOptions")
+    public AjaxResult accountOptions(){
+        List<ApiAccount> list = service.findAll();
+        List<Option> options = list.stream().map(a -> Option.of(a.getId(), a.getName())).toList();
+        return AjaxResult.ok().data(options);
+    }
+
 
 
 

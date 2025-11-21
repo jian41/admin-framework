@@ -10,6 +10,7 @@ import {
     ProTable,
     StrUtil
 } from "../../framework";
+import {ApiDoc} from "@/pages/api/ApiDoc";
 
 
 export default class extends React.Component {
@@ -135,15 +136,7 @@ export default class extends React.Component {
                 },  {
                     label: '接口文档',
                     key: '3',
-                    children:  <ProTable
-                        columns={[
-                            {dataIndex: 'name', title: '名称'},
-                            {dataIndex: 'action', title: '动作'},
-                            {dataIndex: 'desc', title: '描述'},
-
-                        ]}
-                        request={(params,) => HttpUtil.pageData('admin/apiDoc/page', params)}
-                    />
+                    children:  <ApiDoc />
                 },
                 {
                     label: '访问记录',
