@@ -1,7 +1,8 @@
 import {PlusOutlined} from '@ant-design/icons'
-import {Button, Form, Modal, Popconfirm} from 'antd'
+import {Button, Form, message, Modal, Popconfirm, Switch} from 'antd'
 import React from 'react'
 import {
+    ArrUtil,
     ButtonList,
     FieldRadioBoolean,
     FieldTableSelect,
@@ -15,92 +16,60 @@ import {
 
 export default class extends React.Component {
 
-    state = {
-        formValues: {},
-        formOpen: false
-    }
 
-    formRef = React.createRef()
-    tableRef = React.createRef()
+
 
     constructor(props) {
         super(props);
         this.accountId = PageUtil.currentParams().accountId
     }
 
-    columns = [
-
-        {
-            title: '账户',
-            dataIndex: ['account', 'name'],
-
-        },
-
-        {
-            title: '接口名称',
-            dataIndex: ['resource', 'name'],
-        },
-        {
-            title: '接口动作',
-            dataIndex: ['resource', 'action'],
-        },
-        {
-            title: '描述',
-            dataIndex: ['resource', 'desc'],
-        },
-        {
-            title: '启用',
-            dataIndex: 'enable',
-            render(v) {
-                return <ViewBoolean value={v}/>
-            },
-        },
-
-        {
-            title: '操作',
-            dataIndex: 'option',
-            render: (_, record) => (
-                <ButtonList>
-                    <Button size='small' perm='apiAccountResource:save'
-                            onClick={() => this.handleEdit(record)}>编辑</Button>
-                    <Popconfirm perm='apiAccountResource:delete' title='是否确定删除访客权限'
-                                onConfirm={() => this.handleDelete(record)}>
-                        <Button size='small'>删除</Button>
-                    </Popconfirm>
-                </ButtonList>
-            ),
-        },
-    ]
-
-    handleAdd = () => {
-        this.setState({formOpen: true, formValues: {}})
+    state = {
+        perms: []
+    }
+    async componentDidMount() {
+        const rs = await HttpUtil.get('admin/apiAccount/get', {id: this.accountId})
+        this.setState({perms: rs.perms})
     }
 
-    handleEdit = record => {
-        this.setState({formOpen: true, formValues: record})
+    onChange = async (action, checked) => {
+        const hide = message.loading('保存中...', 0)
+        await HttpUtil.post('admin/apiAccount/grant', {accountId: this.accountId, action, checked});
+
+        const perms = this.state.perms
+        if(checked){
+            ArrUtil.add(perms,action)
+        }else {
+            ArrUtil.remove(perms,action)
+        }
+        this.setState({perms})
+        hide();
     }
 
-
-    onFinish = values => {
-        values.account = {id: this.accountId}
-        HttpUtil.post('admin/apiAccountResource/save', values).then(rs => {
-            this.setState({formOpen: false})
-            this.tableRef.current.reload()
-        })
-    }
-
-
-    handleDelete = record => {
-        HttpUtil.get('admin/apiAccountResource/delete', {id: record.id}).then(rs => {
-            this.tableRef.current.reload()
-        })
-    }
 
     render() {
         return <Page>
 
 
+            <ProTable
+                rowKey='action'
+                columns={[
+                    {dataIndex: 'name', title: '名称'},
+                    {dataIndex: 'action', title: '动作'},
+                    {dataIndex: 'desc', title: '描述'},
+                    {
+                        dataIndex: 'option', title: '操作',
+                        render: (_, record) => {
+                            let action = record.action;
+                            return <Switch checked={this.state.perms.includes(action)} onChange={(checked) => {
+                                this.onChange(action,checked)
 
+                            }}> </Switch>
+                        }
+                    }
+                ]}
+                request={(params,) => HttpUtil.pageData('admin/api/resource/page', params)}
+            />
 
         </Page>
 

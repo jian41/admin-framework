@@ -11,6 +11,7 @@ import lombok.Setter;
 import lombok.experimental.FieldNameConstants;
 import org.apache.xmlbeans.impl.xb.xsdschema.impl.TopLevelAttributeImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class ApiAccount extends BaseEntity {
 
     @Lob
     @Convert(converter = ToListConverter.class)
-    private List<String> perms;
+    private List<String> perms = new ArrayList<>();
 
 
 

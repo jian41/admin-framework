@@ -104,6 +104,7 @@ export default class extends React.Component {
                     label: '接口列表',
                     key: '2',
                     children:  <ProTable
+                        rowKey='action'
                         columns={[
                             {dataIndex: 'name', title: '名称'},
                             {dataIndex: 'action', title: '动作'},
