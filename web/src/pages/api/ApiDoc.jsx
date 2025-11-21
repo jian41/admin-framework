@@ -60,7 +60,7 @@ export  class ApiDoc extends React.Component {
                 <Paragraph>
                     <Descriptions column={1} bordered size='small'>
                         <Descriptions.Item label='请求地址'>
-                            {this.state.url}/api/gateway/路径
+                            {this.state.url}/api/gateway/接口名称
                         </Descriptions.Item>
                         <Descriptions.Item label='appId'>
                             私发
@@ -111,8 +111,8 @@ export  class ApiDoc extends React.Component {
                 {apiList.map((api, index) => {
                     return <>
                         <Typography.Title level={3}>{ api.name} </Typography.Title>
+                        <p>接口名称： {api.action}</p>
                         <p>功能描述：{api.desc}</p>
-                        <p>请求路径： /api/gateway/{api.action}</p>
 
 
                         <Title level={5}>请求参数说明</Title>
