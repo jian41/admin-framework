@@ -44,7 +44,7 @@ public class PrefixedSequenceGenerator extends TableGenerator {
     public Object generate(SharedSessionContractImplementor session, Object obj) {
         String id = super.generate(session, obj).toString();
 
-        return prefix + StrUtil.padPre(id, 8, '0');
+        return prefix + StrUtil.padPre(id, 7, '0');
     }
 
 
