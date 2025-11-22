@@ -21,6 +21,7 @@ export default class extends React.Component {
         loginInfo: {},
 
         menuTree: [],
+        menuMap: {},
         pathMenuMap: {},
 
 
@@ -52,6 +53,7 @@ export default class extends React.Component {
     initMenu = () => {
         HttpUtil.get('admin/menuInfo').then(info => {
             const {menuTree, pathMenuMap, menuMap} = info
+            this.setState({menuMap})
 
             let pathname = PageUtil.currentPathname();
 
@@ -133,9 +135,10 @@ export default class extends React.Component {
                           theme='dark'
                           mode="inline"
                           className='left-menu'
-                          onClick={({key, item}) => {
-                              let {path, id} = item.props;
-                              this.setState({currentMenuKey: id})
+                          onClick={({key}) => {
+                              const menu =this.state.menuMap[key]
+                              let {path} = menu;
+                              this.setState({currentMenuKey: key})
                               history.push(path)
                           }}
                           selectedKeys={[this.state.currentMenuKey]}
