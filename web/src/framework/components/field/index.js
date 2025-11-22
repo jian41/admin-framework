@@ -9,8 +9,6 @@ export * from './FieldRemoteTreeSelect';
 
 
 export * from './time';
-export * from './flat-multiple-select';
-export * from './flat-select';
 export * from './dict';
 export * from './FieldRemoteTreeCascader';
 export * from './FieldRemoteTreeMultipleSelect';
