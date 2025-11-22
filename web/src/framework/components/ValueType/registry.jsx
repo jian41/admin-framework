@@ -5,11 +5,11 @@ import {
     FieldInput,
     FieldPassword,
     FieldRadioBoolean,
-    FieldSelect,
     FieldUploadImage
 } from "../field";
 import {ViewImage,  ViewText} from "../view";
 import {ViewPassword,ViewBoolean} from "../../view-components";
+import {FieldRemoteSelect} from "../../field-components";
 
 
 export const fieldRegistry = {
@@ -23,7 +23,7 @@ export const fieldRegistry = {
     imageBase64:FieldImageBase64,
     image:FieldUploadImage,
 
-    select: FieldSelect
+    select: FieldRemoteSelect
 }
 
 export const viewRegistry = {
