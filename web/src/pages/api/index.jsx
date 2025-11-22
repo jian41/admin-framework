@@ -8,7 +8,7 @@ import {
     HttpUtil, Page,
     PageUtil,
     ProTable,
-    StrUtil, VPassword
+    StrUtil, ViewPassword
 } from "../../framework";
 import {ApiDoc} from "@/pages/api/ApiDoc";
 
@@ -37,7 +37,7 @@ export default class extends React.Component {
             title: 'appSecret',
             dataIndex: 'appSecret',
             render(v) {
-                return <VPassword value={v}></VPassword>;
+                return <ViewPassword value={v}></ViewPassword>;
             }
         },
         {

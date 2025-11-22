@@ -8,8 +8,8 @@ import {
     FieldSelect,
     FieldUploadImage
 } from "../field";
-import {ViewBoolean, ViewImage,  ViewText} from "../view";
-import {VPassword} from "../../value-view-components";
+import {ViewImage,  ViewText} from "../view";
+import {ViewPassword,ViewBoolean} from "../../view-components";
 
 
 export const fieldRegistry = {
@@ -28,7 +28,7 @@ export const fieldRegistry = {
 
 export const viewRegistry = {
     text: ViewText,
-    password: VPassword,
+    password: ViewPassword,
     boolean: ViewBoolean,
     imageBase64: ViewImage,
     image:ViewImage

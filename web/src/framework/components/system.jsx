@@ -1,13 +1,13 @@
 import React from 'react';
-import {FieldRemoteTreeSelect, FieldSelect} from './field';
-import {FRemoteSelect, FRemoteSelectMultiple} from "../form-components";
+import {FieldRemoteTreeSelect} from './field';
+import {FieldRemoteSelect, FieldRemoteSelectMultiple} from "../field-components";
 
 
 export function FieldUserSelect(props) {
-  return <FRemoteSelect url="admin/sysUser/options" {...props} />;
+  return <FieldRemoteSelect url="admin/sysUser/options" {...props} />;
 }
 export function FieldUserSelectMultiple(props) {
-  return <FRemoteSelectMultiple  url="admin/sysUser/options" {...props} />;
+  return <FieldRemoteSelectMultiple url="admin/sysUser/options" {...props} />;
 }
 
 export function FieldUnitTreeSelect(props) {
@@ -23,7 +23,7 @@ export function FieldOrgTreeSelect(props) {
 }
 
 export function FieldOrgTreeMultipleSelect(props) {
-  return <FieldSelect multiple={true} url="/sysOrg/deptTree" {...props} />;
+  return <FieldRemoteSelectMultiple url="/sysOrg/deptTree" {...props} />;
 }
 
 

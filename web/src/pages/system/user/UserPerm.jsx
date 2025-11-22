@@ -1,6 +1,6 @@
 import {Form, Modal, Spin, Tree} from 'antd';
 import React from 'react';
-import {FieldDictSelect, FRemoteSelectMultiple, HttpUtil} from "../../../framework";
+import {FieldDictSelect, FieldRemoteSelectMultiple, HttpUtil} from "../../../framework";
 
 
 
@@ -74,7 +74,7 @@ export default class UserPerm extends React.Component {
             >
                 <Form.Item name='id' noStyle></Form.Item>
                 <Form.Item label='角色' name='roleIds' rules={[{required: true}]}>
-                    <FRemoteSelectMultiple url='admin/sysRole/options'/>
+                    <FieldRemoteSelectMultiple url='admin/sysRole/options'/>
                 </Form.Item>
                 <Form.Item label='数据权限' name='dataPermType' rules={[{required: true}]}>
                     <FieldDictSelect typeCode='dataPermType' />

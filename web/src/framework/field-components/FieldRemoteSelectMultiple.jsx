@@ -3,7 +3,7 @@ import {Select, Spin, message} from 'antd';
 import {debounce} from 'lodash';
 import {HttpUtil} from "../system";
 
-export class FRemoteSelect extends React.Component {
+export class FieldRemoteSelectMultiple extends React.Component {
     constructor(props) {
         super(props);
 
@@ -62,7 +62,6 @@ export class FRemoteSelect extends React.Component {
     render() {
         const {options, loading} = this.state;
         const {value, onChange, url, ...selectProps} = this.props;
-
         return (
             <Select
                 showSearch={
@@ -77,7 +76,7 @@ export class FRemoteSelect extends React.Component {
                 notFoundContent={loading ? <Spin size="small"/> : '数据为空'}
                 style={{width: '100%', minWidth: 200}}
                 allowClear
-
+                mode='multiple'
                 {...selectProps}
             >
             </Select>
