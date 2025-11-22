@@ -1,7 +1,7 @@
 import React from 'react';
 import { SelectProps } from 'antd/es/select';
 
-export interface FRemoteSelectMultipleProps extends Omit<SelectProps, 'options' | 'children'> {
+export interface FRemoteSelectMultipleProps extends Omit<SelectProps, 'options' | 'children'| 'mode'> {
 
     /**
      * 请求地址
