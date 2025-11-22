@@ -64,11 +64,9 @@ public class ApiAccountController {
 
     @HasPermission("apiAccount:view")
     @RequestMapping("page")
-    public AjaxResult page(ApiAccount request, @PageableDefault(direction = Sort.Direction.DESC, sort = "updateTime") Pageable pageable) throws Exception {
+    public AjaxResult page(String searchText, @PageableDefault(direction = Sort.Direction.DESC, sort = "updateTime") Pageable pageable) throws Exception {
         JpaQuery<ApiAccount> q = new JpaQuery<>();
-        // 视情况修改
-        q.likeExample(request);
-
+        q.searchText(searchText, "name");
         Page<ApiAccount> page = service.findPageByRequest(q, pageable);
         return AjaxResult.ok().data(page);
     }
