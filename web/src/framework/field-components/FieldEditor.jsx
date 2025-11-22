@@ -25,6 +25,15 @@ export class FieldEditor extends React.Component {
                     images_upload_base_path: '',
                     promotion: false, // 不显示升级按钮（右上角）
                     cache_suffix: '?v=v7.7',
+
+                    plugins: [
+                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                        'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                    ],
+                    toolbar_mode: 'Sliding',
+                    toolbar: "fontsize  blocks  bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify |image link | bullist numlist outdent indent | removeformat  |fontfamily| undo redo | help",
+
                 }}
                 onChange={e => {
                     if (onChange) {
